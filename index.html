@@ -3,30 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>伊勢屋テック｜営業専用 外装提案ツール v3</title>
+  <title>伊勢屋テック｜営業専用 外装提案ツール v4</title>
   <style>
     :root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7;--warn:#fef3c7;--accent:#2563eb}
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1540px;margin:0 auto;padding:20px}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1560px;margin:0 auto;padding:20px}
     .top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
-    h1{margin:0 0 8px;font-size:32px}.sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:1000px}
+    h1{margin:0 0 8px;font-size:32px}
+    .sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:1000px}
     .badge{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:8px}
-    .layout{display:grid;grid-template-columns:470px 1fr;gap:20px}
+    .layout{display:grid;grid-template-columns:480px 1fr;gap:20px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 1px 2px rgba(15,23,42,.03)}
-    .card h2{font-size:18px;margin:0 0 6px}.desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}.label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}
-    .section{display:grid;gap:16px}.row{display:flex;gap:8px;flex-wrap:wrap}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .file-label,button,select,input[type="text"],input[type="range"]{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
-    .file-label,button{cursor:pointer} button.primary{background:var(--primary);color:#fff;border-color:var(--primary)} button:disabled{opacity:.5;cursor:not-allowed}
-    input[type="file"]{display:none} input[type="text"],select{width:100%}
-    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}.swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
-    .chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}.materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff}.material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
-    .status{display:grid;gap:8px}.status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}.status-box.ok{background:var(--ok)} .status-box.warn{background:var(--warn)}
-    .compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}.pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}
-    .preview-wrap{min-height:780px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}.preview-stack{display:grid;gap:12px;justify-items:center;width:100%}
-    canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}
+    .card h2{font-size:18px;margin:0 0 6px}
+    .desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}
+    .label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}
+    .section{display:grid;gap:16px}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .file-label,button,select,input[type="text"]{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
+    .file-label,button{cursor:pointer}
+    button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    input[type="file"]{display:none}
+    input[type="text"],select{width:100%}
+    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}
+    .swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
+    .chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}
+    .materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff}
+    .material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+    .status{display:grid;gap:8px}
+    .status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}
+    .status-box.ok{background:var(--ok)}
+    .status-box.warn{background:var(--warn)}
     .hint{padding:12px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7}
-    .range-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
+    .compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}
+    .preview-wrap{min-height:780px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}
+    .preview-stack{display:grid;gap:12px;justify-items:center;width:100%}
+    canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}
     .placeholder{text-align:center;color:var(--muted)}
     @media (max-width:1100px){.layout{grid-template-columns:1fr}.preview-wrap{min-height:520px}}
   </style>
@@ -35,9 +52,9 @@
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v3 / PowerPoint-style mask resize</div>
-      <h1>営業専用 外装提案ツール v3</h1>
-      <div class="sub">マスクをPowerPointの四角形のように、枠線ドラッグで移動、四隅ドラッグでサイズ変更できる版です。青い最終マスクを見ながら、建物にぴったり合わせて調整できます。</div>
+      <div class="badge">v4 / Free-angle polygon mask</div>
+      <h1>営業専用 外装提案ツール v4</h1>
+      <div class="sub">PowerPointの図形のように、自由な角度の多角形でマスクを描ける版です。クリックで頂点を追加、ダブルクリックで確定、頂点をドラッグして形を修正、図形内ドラッグで全体移動ができます。</div>
     </div>
     <div class="row">
       <button id="downloadJpgBtn" disabled>JPG出力</button>
@@ -81,7 +98,7 @@
 
       <div class="card">
         <h2>④ 加工エリア</h2>
-        <div class="desc">全体マスクの上で、加工する位置を選べます。</div>
+        <div class="desc">簡易プリセットか、自由角度の多角形を選べます。</div>
         <select id="areaMode">
           <option value="full">全面</option>
           <option value="upper">上部のみ</option>
@@ -89,25 +106,27 @@
           <option value="lower">下部のみ</option>
           <option value="left">左側のみ</option>
           <option value="right">右側のみ</option>
+          <option value="polygon">自由角度ポリゴン</option>
         </select>
+        <div id="polygonTools" style="display:none;margin-top:12px">
+          <div class="hint">
+            操作方法<br>
+            ・クリック：頂点追加<br>
+            ・ダブルクリック：図形確定<br>
+            ・頂点ドラッグ：角度調整<br>
+            ・図形内ドラッグ：図形全体移動<br>
+            ・頂点ダブルクリック：その頂点を削除
+          </div>
+          <div class="row" style="margin-top:10px">
+            <button id="startPolygonBtn">ポリゴン作成開始</button>
+            <button id="closePolygonBtn">図形を確定</button>
+            <button id="clearPolygonBtn">図形クリア</button>
+          </div>
+        </div>
       </div>
 
       <div class="card">
-        <h2>⑤ マスク調整</h2>
-        <div class="desc">青い枠をPowerPointの図形のように直接調整できます。</div>
-        <div class="hint">
-          操作方法<br>
-          ・枠線の内側をドラッグ：移動<br>
-          ・四隅の白ハンドルをドラッグ：拡大縮小<br>
-          ・「マスク初期化」で元の位置に戻す
-        </div>
-        <div class="row" style="margin-top:10px">
-          <button id="resetMaskBtn">マスク初期化</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>⑥ 生成</h2>
+        <h2>⑤ 生成</h2>
         <div class="desc">青いマスクが建物に合ったら生成してください。</div>
         <div class="row">
           <button id="generateBtn" class="primary" disabled>提案生成</button>
@@ -123,7 +142,7 @@
     <div class="section">
       <div class="card">
         <h2>マスク確認 / 提案プレビュー</h2>
-        <div class="desc">上段の青いマスクが実際に加工される範囲です。ここをドラッグして調整してください。</div>
+        <div class="desc">自由角度ポリゴンでは、PowerPointのように角を動かして形を作れます。</div>
         <div class="compare-note">
           <span class="pill" id="areaPill">加工エリア：全面</span>
           <span class="pill" id="selectionPill">選択色：未選択</span>
@@ -133,7 +152,7 @@
           <div class="preview-stack">
             <div id="placeholder" class="placeholder">
               <div style="font-size:18px;font-weight:700;margin-bottom:8px">まず建物の外観写真をアップロードしてください</div>
-              <div style="font-size:12px;color:#64748b">青い枠を直接動かせます。</div>
+              <div style="font-size:12px;color:#64748b">自由角度ポリゴンに対応しています。</div>
             </div>
             <canvas id="editCanvas" width="1100" height="620" style="display:none"></canvas>
             <canvas id="compareCanvas" width="1400" height="820" style="display:none"></canvas>
@@ -154,9 +173,15 @@ const PRESET_COLORS=[
   {code:'N-20',name:'チャコール',hex:'#474742'},
   {code:'BROWN-01',name:'ダークブラウン',hex:'#5D4636'}
 ];
-const AREA_LABELS={full:'全面',upper:'上部のみ',center:'中央のみ',lower:'下部のみ',left:'左側のみ',right:'右側のみ'};
-const HANDLE_SIZE=12;
-const state={baseImage:null,baseImageDataUrl:null,baseImageFileName:'',material:null,selectedColor:null,areaMode:'full',maskRect:null,defaultMaskRect:null,dragMode:null,dragHandle:null,dragStart:null,rectStart:null,editScale:1,compareCanvas:null};
+const AREA_LABELS={full:'全面',upper:'上部のみ',center:'中央のみ',lower:'下部のみ',left:'左側のみ',right:'右側のみ',polygon:'自由角度ポリゴン'};
+const HANDLE_RADIUS=10;
+const state={
+  baseImage:null,baseImageDataUrl:null,baseImageFileName:'',
+  material:null,selectedColor:null,areaMode:'full',
+  polygonPoints:[],polygonClosed:false,creatingPolygon:false,
+  dragMode:null,dragVertexIndex:-1,dragStart:null,polygonStart:null,
+  editScale:1,compareCanvas:null
+};
 
 const $=(id)=>document.getElementById(id);
 const editCanvas=$('editCanvas'), editCtx=editCanvas.getContext('2d');
@@ -168,7 +193,20 @@ function setStatus(message,mode='normal'){const box=$('statusBox');box.textConte
 function fileToDataUrl(file){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(file);});}
 function loadImage(url){return new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=reject;img.crossOrigin='anonymous';img.src=url;});}
 function fitRect(imgW,imgH,maxW,maxH){const scale=Math.min(maxW/imgW,maxH/imgH,1);return {width:Math.round(imgW*scale),height:Math.round(imgH*scale),scale};}
-
+function pointInPolygon(point, points){
+  let inside=false;
+  for(let i=0,j=points.length-1;i<points.length;j=i++){
+    const xi=points[i].x, yi=points[i].y, xj=points[j].x, yj=points[j].y;
+    const intersect=((yi>point.y)!==(yj>point.y)) && (point.x < (xj-xi)*(point.y-yi)/(yj-yi+0.00001)+xi);
+    if(intersect) inside=!inside;
+  }
+  return inside;
+}
+function clampPoint(p){
+  p.x=Math.max(0,Math.min(state.baseImage.width,p.x));
+  p.y=Math.max(0,Math.min(state.baseImage.height,p.y));
+  return p;
+}
 function renderSwatches(){
   const box=$('swatches');box.innerHTML='';
   PRESET_COLORS.forEach(color=>{
@@ -187,53 +225,41 @@ function renderMaterial(){
   box.appendChild(item);$('materialPill').textContent=`素材：${state.material.name}`;
 }
 function updateGenerateButton(){
-  $('generateBtn').disabled=!(state.baseImage&&state.selectedColor);
+  const polygonReady = state.areaMode !== 'polygon' || (state.polygonClosed && state.polygonPoints.length >= 3);
+  $('generateBtn').disabled=!(state.baseImage && state.selectedColor && polygonReady);
   $('resetBtn').disabled=!state.baseImage;
   $('downloadJpgBtn').disabled=!state.compareCanvas;
   $('downloadPdfBtn').disabled=!state.compareCanvas;
   $('areaPill').textContent=`加工エリア：${AREA_LABELS[state.areaMode]}`;
+  $('polygonTools').style.display=state.areaMode==='polygon' ? 'block' : 'none';
 }
-
-function createDefaultMaskRect(image){
-  return {
-    x:image.width*0.18,
-    y:image.height*0.16,
-    w:image.width*0.66,
-    h:image.height*0.58
-  };
-}
-function clampRect(rect,image){
-  const minW=Math.max(40,image.width*0.08);
-  const minH=Math.max(40,image.height*0.08);
-  rect.w=Math.max(minW,rect.w);
-  rect.h=Math.max(minH,rect.h);
-  rect.x=Math.max(0,Math.min(image.width-rect.w,rect.x));
-  rect.y=Math.max(0,Math.min(image.height-rect.h,rect.y));
-  return rect;
-}
-function createRectMask(image, rect){
-  const c=document.createElement('canvas');c.width=image.width;c.height=image.height;
-  const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(rect.x,rect.y,rect.w,rect.h);return c;
-}
-function createAreaMask(mode, image, rect){
-  const c=document.createElement('canvas');c.width=image.width;c.height=image.height;
-  const ctx=c.getContext('2d');ctx.fillStyle='#fff';
-  if(mode==='full') ctx.fillRect(rect.x,rect.y,rect.w,rect.h);
-  else if(mode==='upper') ctx.fillRect(rect.x,rect.y,rect.w,rect.h*0.35);
-  else if(mode==='center') ctx.fillRect(rect.x,rect.y+rect.h*0.28,rect.w,rect.h*0.32);
-  else if(mode==='lower') ctx.fillRect(rect.x,rect.y+rect.h*0.62,rect.w,rect.h*0.22);
-  else if(mode==='left') ctx.fillRect(rect.x,rect.y,rect.w*0.45,rect.h);
-  else if(mode==='right') ctx.fillRect(rect.x+rect.w*0.55,rect.y,rect.w*0.45,rect.h);
+function createPresetMask(mode,image){
+  const c=document.createElement('canvas');c.width=image.width;c.height=image.height;const ctx=c.getContext('2d');ctx.fillStyle='#fff';
+  if(mode==='full') ctx.fillRect(image.width*0.16,image.height*0.14,image.width*0.68,image.height*0.58);
+  else if(mode==='upper') ctx.fillRect(image.width*0.16,image.height*0.14,image.width*0.68,image.height*0.20);
+  else if(mode==='center') ctx.fillRect(image.width*0.18,image.height*0.30,image.width*0.64,image.height*0.24);
+  else if(mode==='lower') ctx.fillRect(image.width*0.16,image.height*0.54,image.width*0.68,image.height*0.14);
+  else if(mode==='left') ctx.fillRect(image.width*0.16,image.height*0.14,image.width*0.28,image.height*0.58);
+  else if(mode==='right') ctx.fillRect(image.width*0.56,image.height*0.14,image.width*0.28,image.height*0.58);
   return c;
+}
+function createPolygonMask(image){
+  const c=document.createElement('canvas');c.width=image.width;c.height=image.height;const ctx=c.getContext('2d');
+  if(state.polygonPoints.length<3 || !state.polygonClosed) return c;
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(state.polygonPoints[0].x,state.polygonPoints[0].y);
+  for(let i=1;i<state.polygonPoints.length;i++) ctx.lineTo(state.polygonPoints[i].x,state.polygonPoints[i].y);
+  ctx.closePath();ctx.fill();
+  return c;
+}
+function getFinalMask(image){
+  return state.areaMode==='polygon' ? createPolygonMask(image) : createPresetMask(state.areaMode,image);
 }
 function applyColorAndMaterial(image, maskCanvas, color, material){
   const result=document.createElement('canvas');result.width=image.width;result.height=image.height;const ctx=result.getContext('2d');
   ctx.drawImage(image,0,0);
-
   const colorLayer=document.createElement('canvas');colorLayer.width=image.width;colorLayer.height=image.height;
   const cctx=colorLayer.getContext('2d');cctx.fillStyle=color.hex;cctx.globalAlpha=0.54;cctx.fillRect(0,0,colorLayer.width,colorLayer.height);
   cctx.globalAlpha=1;cctx.globalCompositeOperation='destination-in';cctx.drawImage(maskCanvas,0,0);ctx.drawImage(colorLayer,0,0);
-
   if(material?.image){
     const textureLayer=document.createElement('canvas');textureLayer.width=image.width;textureLayer.height=image.height;const tctx=textureLayer.getContext('2d');
     const p=document.createElement('canvas');p.width=180;p.height=180;const pctx=p.getContext('2d');pctx.drawImage(material.image,0,0,180,180);
@@ -261,7 +287,6 @@ function buildCompare(beforeImage, afterCanvas){
   compareCtx.fillStyle='#0f172a';compareCtx.font='bold 18px sans-serif';compareCtx.fillText('Before',x1,y+fitted.height+28);compareCtx.fillText('After',x2,y+fitted.height+28);
   state.compareCanvas=compareCanvas;
 }
-
 function renderEditPreview(){
   if(!state.baseImage){$('editCanvas').style.display='none';return;}
   const fitted=fitRect(state.baseImage.width,state.baseImage.height,1100,620);
@@ -269,92 +294,65 @@ function renderEditPreview(){
   editCtx.clearRect(0,0,editCanvas.width,editCanvas.height);
   editCtx.drawImage(state.baseImage,0,0,editCanvas.width,editCanvas.height);
 
-  const mask=createAreaMask(state.areaMode,state.baseImage,state.maskRect);
+  const mask=getFinalMask(state.baseImage);
   const overlay=document.createElement('canvas');overlay.width=state.baseImage.width;overlay.height=state.baseImage.height;
   const octx=overlay.getContext('2d');octx.drawImage(mask,0,0);octx.globalCompositeOperation='source-in';octx.fillStyle='rgba(37,99,235,0.22)';octx.fillRect(0,0,overlay.width,overlay.height);
   editCtx.drawImage(overlay,0,0,editCanvas.width,editCanvas.height);
 
-  drawRectWithHandles(state.maskRect);
+  if(state.areaMode==='polygon') drawPolygonGuides();
   $('editCanvas').style.display='block';
 }
-function drawRectWithHandles(r){
+function drawPolygonGuides(){
+  const pts=state.polygonPoints;
   const s=state.editScale;
-  const x=r.x*s,y=r.y*s,w=r.w*s,h=r.h*s;
   editCtx.save();
-  editCtx.lineWidth=2;editCtx.setLineDash([8,6]);editCtx.strokeStyle='rgba(37,99,235,0.95)';editCtx.fillStyle='rgba(37,99,235,0.08)';
-  editCtx.fillRect(x,y,w,h);editCtx.strokeRect(x,y,w,h);
-  editCtx.setLineDash([]);
-  const handles=getHandlePoints(r).map(p=>({x:p.x*s,y:p.y*s}));
-  handles.forEach(p=>{
-    editCtx.fillStyle='#fff';editCtx.strokeStyle='rgba(37,99,235,1)';editCtx.lineWidth=2;
-    editCtx.beginPath();editCtx.rect(p.x-HANDLE_SIZE/2,p.y-HANDLE_SIZE/2,HANDLE_SIZE,HANDLE_SIZE);editCtx.fill();editCtx.stroke();
-  });
+  if(pts.length>0){
+    editCtx.setLineDash([8,6]);editCtx.lineWidth=2;editCtx.strokeStyle='rgba(37,99,235,0.95)';
+    editCtx.beginPath();editCtx.moveTo(pts[0].x*s,pts[0].y*s);
+    for(let i=1;i<pts.length;i++) editCtx.lineTo(pts[i].x*s,pts[i].y*s);
+    if(state.polygonClosed) editCtx.closePath();
+    editCtx.stroke();
+    editCtx.setLineDash([]);
+    pts.forEach((p,idx)=>{
+      editCtx.fillStyle='#fff';editCtx.strokeStyle='rgba(37,99,235,1)';editCtx.lineWidth=2;
+      editCtx.beginPath();editCtx.arc(p.x*s,p.y*s,HANDLE_RADIUS,0,Math.PI*2);editCtx.fill();editCtx.stroke();
+      editCtx.fillStyle='rgba(37,99,235,1)';editCtx.font='12px sans-serif';editCtx.fillText(String(idx+1),p.x*s+12,p.y*s-12);
+    });
+  }
   editCtx.restore();
-}
-function getHandlePoints(r){
-  return [
-    {name:'nw',x:r.x,y:r.y},
-    {name:'ne',x:r.x+r.w,y:r.y},
-    {name:'sw',x:r.x,y:r.y+r.h},
-    {name:'se',x:r.x+r.w,y:r.y+r.h}
-  ];
 }
 function canvasToImagePoint(evt){
   const rect=editCanvas.getBoundingClientRect();
-  return {
-    x:Math.max(0,Math.min(state.baseImage.width,((evt.clientX-rect.left)/rect.width)*state.baseImage.width)),
-    y:Math.max(0,Math.min(state.baseImage.height,((evt.clientY-rect.top)/rect.height)*state.baseImage.height))
-  };
+  return {x:Math.max(0,Math.min(state.baseImage.width,((evt.clientX-rect.left)/rect.width)*state.baseImage.width)),
+          y:Math.max(0,Math.min(state.baseImage.height,((evt.clientY-rect.top)/rect.height)*state.baseImage.height))};
 }
-function hitTest(point){
-  const r=state.maskRect;
-  const hs=HANDLE_SIZE/state.editScale;
-  for(const h of getHandlePoints(r)){
-    if(Math.abs(point.x-h.x)<=hs && Math.abs(point.y-h.y)<=hs){
-      return {type:'handle',handle:h.name};
-    }
+function hitTestPolygon(point){
+  const r=HANDLE_RADIUS/state.editScale;
+  for(let i=0;i<state.polygonPoints.length;i++){
+    const p=state.polygonPoints[i];
+    if(Math.hypot(point.x-p.x, point.y-p.y) <= r) return {type:'vertex',index:i};
   }
-  if(point.x>=r.x && point.x<=r.x+r.w && point.y>=r.y && point.y<=r.y+r.h){
-    return {type:'move'};
-  }
+  if(state.polygonClosed && pointInPolygon(point,state.polygonPoints)) return {type:'move'};
   return {type:'none'};
-}
-function applyDrag(point){
-  if(!state.dragMode)return;
-  const dx=point.x-state.dragStart.x, dy=point.y-state.dragStart.y;
-  let r={...state.rectStart};
-  if(state.dragMode==='move'){
-    r.x=state.rectStart.x+dx; r.y=state.rectStart.y+dy;
-  }else{
-    if(state.dragHandle==='nw'){ r.x=state.rectStart.x+dx; r.y=state.rectStart.y+dy; r.w=state.rectStart.w-dx; r.h=state.rectStart.h-dy; }
-    if(state.dragHandle==='ne'){ r.y=state.rectStart.y+dy; r.w=state.rectStart.w+dx; r.h=state.rectStart.h-dy; }
-    if(state.dragHandle==='sw'){ r.x=state.rectStart.x+dx; r.w=state.rectStart.w-dx; r.h=state.rectStart.h+dy; }
-    if(state.dragHandle==='se'){ r.w=state.rectStart.w+dx; r.h=state.rectStart.h+dy; }
-  }
-  state.maskRect=clampRect(r,state.baseImage);
-  renderEditPreview();
 }
 async function generateProposal(){
   if(!state.baseImage || !state.selectedColor)return;
+  if(state.areaMode==='polygon' && (!state.polygonClosed || state.polygonPoints.length<3)){
+    setStatus('自由角度ポリゴンでは、3点以上で図形を確定してください。','warn'); return;
+  }
   try{
-    const finalMask=createAreaMask(state.areaMode,state.baseImage,state.maskRect);
+    const finalMask=getFinalMask(state.baseImage);
     const result=applyColorAndMaterial(state.baseImage,finalMask,state.selectedColor,state.material);
     buildCompare(state.baseImage,result);
     $('placeholder').style.display='none';$('compareCanvas').style.display='block';
     $('resultSummary').style.display='block';
     $('resultSummary').innerHTML=`<div><strong>生成完了</strong></div><div>対象色：${state.selectedColor.code} / ${state.selectedColor.name}</div><div>加工エリア：${AREA_LABELS[state.areaMode]}</div><div>素材：${state.material ? state.material.name : 'なし'}</div><div>推定加工面積：画像全体の ${calculateMaskRatio(finalMask)}%</div>`;
-    setStatus('提案画像を生成しました。', 'ok');
+    setStatus('提案画像を生成しました。','ok');
     updateGenerateButton();
   }catch(e){console.error(e);setStatus('生成に失敗しました。','warn');}
 }
-function resetMask(){
-  if(!state.baseImage)return;
-  state.maskRect={...state.defaultMaskRect};
-  renderEditPreview();
-  setStatus('マスクを初期位置に戻しました。','ok');
-}
 function resetAll(){
-  state.baseImage=null;state.baseImageDataUrl=null;state.baseImageFileName='';state.material=null;state.selectedColor=null;state.maskRect=null;state.defaultMaskRect=null;state.compareCanvas=null;
+  state.baseImage=null;state.baseImageDataUrl=null;state.baseImageFileName='';state.material=null;state.selectedColor=null;state.polygonPoints=[];state.polygonClosed=false;state.creatingPolygon=false;state.compareCanvas=null;
   $('baseInfo').textContent='';$('materialsGrid').innerHTML='';$('resultSummary').style.display='none';$('placeholder').style.display='block';$('editCanvas').style.display='none';$('compareCanvas').style.display='none';
   $('selectionPill').textContent='選択色：未選択';$('materialPill').textContent='素材：なし';
   renderSwatches();renderMaterial();updateGenerateButton();setStatus('待機中です。');
@@ -373,40 +371,80 @@ function downloadPdf(){
   pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.92),'JPEG',36,100,w-72,h-150); pdf.save(`${($('projectName').value||'proposal').replace(/\s+/g,'-')}.pdf`);
 }
 async function handleBaseImage(file){
-  state.baseImageDataUrl=await fileToDataUrl(file); state.baseImage=await loadImage(state.baseImageDataUrl); state.baseImageFileName=file.name;
-  state.defaultMaskRect=createDefaultMaskRect(state.baseImage); state.maskRect={...state.defaultMaskRect};
+  state.baseImageDataUrl=await fileToDataUrl(file);state.baseImage=await loadImage(state.baseImageDataUrl);state.baseImageFileName=file.name;
+  state.polygonPoints=[];state.polygonClosed=false;state.creatingPolygon=false;
   $('baseInfo').textContent=`${file.name} / ${state.baseImage.width} × ${state.baseImage.height}`;
-  renderEditPreview(); updateGenerateButton(); setStatus('写真を読み込みました。青い枠をドラッグして調整できます。','ok');
+  renderEditPreview();updateGenerateButton();setStatus('写真を読み込みました。自由角度ポリゴンも使えます。','ok');
 }
 async function handleMaterial(file){
-  const previewUrl=await fileToDataUrl(file); state.material={name:file.name,previewUrl,image:await loadImage(previewUrl)};
-  renderMaterial(); setStatus('素材画像を読み込みました。','ok');
+  const previewUrl=await fileToDataUrl(file);state.material={name:file.name,previewUrl,image:await loadImage(previewUrl)};
+  renderMaterial();setStatus('素材画像を読み込みました。','ok');
+}
+function startPolygon(){
+  state.areaMode='polygon';$('areaMode').value='polygon';state.polygonPoints=[];state.polygonClosed=false;state.creatingPolygon=true;
+  updateGenerateButton();renderEditPreview();setStatus('ポリゴン作成を開始しました。クリックで頂点追加、ダブルクリックで確定です。','warn');
+}
+function closePolygon(){
+  if(state.polygonPoints.length<3){setStatus('3点以上で図形を確定してください。','warn');return;}
+  state.polygonClosed=true;state.creatingPolygon=false;updateGenerateButton();renderEditPreview();setStatus('ポリゴンを確定しました。頂点ドラッグで調整できます。','ok');
+}
+function clearPolygon(){
+  state.polygonPoints=[];state.polygonClosed=false;state.creatingPolygon=false;updateGenerateButton();renderEditPreview();setStatus('ポリゴンをクリアしました。','ok');
 }
 
-renderSwatches(); renderMaterial(); updateGenerateButton(); setStatus('待機中です。');
+renderSwatches();renderMaterial();updateGenerateButton();setStatus('待機中です。');
 
-$('baseImageInput').addEventListener('change', async e=>{const file=e.target.files[0]; if(file) await handleBaseImage(file);});
-$('materialInput').addEventListener('change', async e=>{const file=e.target.files[0]; if(file) await handleMaterial(file);});
-$('areaMode').addEventListener('change', e=>{state.areaMode=e.target.value; updateGenerateButton(); renderEditPreview();});
+$('baseImageInput').addEventListener('change', async e=>{const file=e.target.files[0];if(file) await handleBaseImage(file);});
+$('materialInput').addEventListener('change', async e=>{const file=e.target.files[0];if(file) await handleMaterial(file);});
+$('areaMode').addEventListener('change', e=>{state.areaMode=e.target.value; if(e.target.value!=='polygon'){state.creatingPolygon=false;} updateGenerateButton(); renderEditPreview();});
+$('startPolygonBtn').onclick=startPolygon;
+$('closePolygonBtn').onclick=closePolygon;
+$('clearPolygonBtn').onclick=clearPolygon;
 $('generateBtn').onclick=generateProposal;
 $('resetBtn').onclick=resetAll;
-$('resetMaskBtn').onclick=resetMask;
 $('downloadJpgBtn').onclick=downloadJpg;
 $('downloadPdfBtn').onclick=downloadPdf;
 
+editCanvas.addEventListener('click', e=>{
+  if(state.areaMode!=='polygon' || !state.baseImage || !state.creatingPolygon) return;
+  if(state.dragMode) return;
+  const p=canvasToImagePoint(e);
+  state.polygonPoints.push(clampPoint(p));
+  renderEditPreview();
+});
+editCanvas.addEventListener('dblclick', e=>{
+  if(state.areaMode!=='polygon' || !state.baseImage) return;
+  const p=canvasToImagePoint(e);
+  const hit=hitTestPolygon(p);
+  if(hit.type==='vertex' && state.polygonClosed && state.polygonPoints.length>3){
+    state.polygonPoints.splice(hit.index,1);
+    renderEditPreview();
+    setStatus('頂点を削除しました。','ok');
+    return;
+  }
+  if(state.creatingPolygon) closePolygon();
+});
 editCanvas.addEventListener('pointerdown', e=>{
-  if(!state.baseImage || !state.maskRect)return;
-  const p=canvasToImagePoint(e); const hit=hitTest(p);
-  if(hit.type==='none') return;
-  state.dragStart=p; state.rectStart={...state.maskRect};
-  if(hit.type==='move'){ state.dragMode='move'; setStatus('マスクを移動中です。'); }
-  else { state.dragMode='resize'; state.dragHandle=hit.handle; setStatus('マスクサイズを調整中です。'); }
+  if(state.areaMode!=='polygon' || !state.baseImage || !state.polygonClosed) return;
+  const p=canvasToImagePoint(e); const hit=hitTestPolygon(p);
+  if(hit.type==='vertex'){
+    state.dragMode='vertex'; state.dragVertexIndex=hit.index; state.dragStart=p; setStatus('頂点を調整中です。');
+  }else if(hit.type==='move'){
+    state.dragMode='move'; state.dragStart=p; state.polygonStart=state.polygonPoints.map(pt=>({x:pt.x,y:pt.y})); setStatus('図形全体を移動中です。');
+  }
 });
 editCanvas.addEventListener('pointermove', e=>{
-  if(!state.dragMode)return;
-  const p=canvasToImagePoint(e); applyDrag(p);
+  if(!state.dragMode || state.areaMode!=='polygon') return;
+  const p=canvasToImagePoint(e);
+  if(state.dragMode==='vertex'){
+    state.polygonPoints[state.dragVertexIndex]=clampPoint(p);
+  }else if(state.dragMode==='move'){
+    const dx=p.x-state.dragStart.x, dy=p.y-state.dragStart.y;
+    state.polygonPoints=state.polygonStart.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy}));
+  }
+  renderEditPreview();
 });
-const finishDrag=()=>{ if(!state.dragMode)return; state.dragMode=null; state.dragHandle=null; setStatus('マスクを調整しました。','ok'); };
+const finishDrag=()=>{ if(!state.dragMode)return; state.dragMode=null; state.dragVertexIndex=-1; state.polygonStart=null; setStatus('ポリゴンを調整しました。','ok'); };
 editCanvas.addEventListener('pointerup', finishDrag);
 editCanvas.addEventListener('pointerleave', finishDrag);
 </script>
