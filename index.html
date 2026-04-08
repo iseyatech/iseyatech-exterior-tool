@@ -3,24 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>伊勢屋テック｜営業専用 外装提案AIツール</title>
+  <title>伊勢屋テック｜営業専用 外装提案AIツール 安定版</title>
   <style>
-    :root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7}
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1480px;margin:0 auto;padding:20px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
-    h1{margin:0 0 8px;font-size:32px}.sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:920px}.badge{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:8px}
-    .layout{display:grid;grid-template-columns:420px 1fr;gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 1px 2px rgba(15,23,42,.03)}.card h2{font-size:18px;margin:0 0 6px}
-    .desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}.label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}.small{font-size:12px;color:var(--muted)}
-    .file-label,button,select,input[type="text"]{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
-    .file-label,button{cursor:pointer} button.primary{background:var(--primary);color:#fff;border-color:var(--primary)} button:disabled{opacity:.5;cursor:not-allowed}
-    input[type="file"]{display:none} input[type="text"],select{width:100%}.section{display:grid;gap:16px}.row{display:flex;gap:8px;flex-wrap:wrap}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}.swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
-    .chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}.preview-wrap{min-height:780px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}
-    .placeholder{text-align:center;color:var(--muted)} canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px}.status{display:grid;gap:8px}.status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}
-    .status-box.ok{background:var(--ok)} .toggle{display:flex;gap:8px;background:var(--soft);padding:6px;border-radius:14px;border:1px solid var(--line)} .toggle button{flex:1}
-    .hint{padding:12px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7}.materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff;cursor:pointer}.material.active{outline:2px solid #94a3b8}.material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
-    .compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}.pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}
+    :root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7;--warn:#fef3c7}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1500px;margin:0 auto;padding:20px}
+    .top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
+    h1{margin:0 0 8px;font-size:32px}
+    .sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:960px}
+    .badge{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:8px}
+    .layout{display:grid;grid-template-columns:440px 1fr;gap:20px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 1px 2px rgba(15,23,42,.03)}
+    .card h2{font-size:18px;margin:0 0 6px}
+    .desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}
+    .label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}
+    .small{font-size:12px;color:var(--muted)}
+    .section{display:grid;gap:16px}
+    .row{display:flex;gap:8px;flex-wrap:wrap}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .file-label,button,select,input[type="text"],input[type="number"]{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
+    .file-label,button{cursor:pointer}
+    button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+    button.secondary{background:#fff;color:#111827}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    input[type="file"]{display:none}
+    input[type="text"],input[type="number"],select{width:100%}
+    .swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}
+    .swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
+    .chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}
+    .materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff;cursor:pointer}
+    .material.active{outline:2px solid #94a3b8}
+    .material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+    .toggle{display:flex;gap:8px;background:var(--soft);padding:6px;border-radius:14px;border:1px solid var(--line)}
+    .toggle button{flex:1}
+    .hint{padding:12px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7}
+    .status{display:grid;gap:8px}
+    .status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}
+    .status-box.ok{background:var(--ok)}
+    .status-box.warn{background:var(--warn)}
+    .compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}
+    .preview-wrap{min-height:780px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}
+    .preview-stack{display:grid;gap:12px;justify-items:center;width:100%}
+    .placeholder{text-align:center;color:var(--muted)}
+    canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}
+    .tool-row{display:flex;gap:8px;flex-wrap:wrap}
     @media (max-width:1100px){.layout{grid-template-columns:1fr}.preview-wrap{min-height:520px}}
   </style>
 </head>
@@ -28,9 +59,9 @@
   <div class="wrap">
     <div class="top">
       <div>
-        <div class="badge">Sales Edition / AI Auto Detect</div>
-        <h1>営業専用 外装提案AIツール</h1>
-        <div class="sub">写真を入れる → 色を選ぶ → 生成する、だけで使える営業専用版です。AIで建物領域を自動検出し、ワンクリックで外装イメージを作成します。初回のみAIモデルの読込に時間がかかる場合があります。</div>
+        <div class="badge">Sales Edition / Stable Auto Detect + Area Selection</div>
+        <h1>営業専用 外装提案AIツール 安定版</h1>
+        <div class="sub">営業が止まらないことを最優先にした安定版です。建物の自動推定をベースにしつつ、加工するエリアを「全面・上部・中央・下部・左・右・手動指定」から選べます。失敗しやすいブラウザAI依存を外し、常に結果が出る設計にしています。</div>
       </div>
       <div class="row">
         <button id="saveLocalBtn">このブラウザーに保存</button>
@@ -44,7 +75,7 @@
       <div class="section">
         <div class="card">
           <h2>案件情報</h2>
-          <div class="desc">提案書の見出しとファイル名に使用します。</div>
+          <div class="desc">提案書の見出しとファイル名に利用します。</div>
           <label class="label">案件名</label>
           <input id="projectName" type="text" value="外装塗装提案" />
           <div style="height:10px"></div>
@@ -62,7 +93,7 @@
 
         <div class="card">
           <h2>② 提案色を選ぶ</h2>
-          <div class="desc">営業現場向けに、よく使う6色を初期搭載しています。必要なら独自色も追加できます。</div>
+          <div class="desc">営業現場向けの標準色を初期搭載しています。独自色も設定可能です。</div>
           <div id="swatches" class="swatches"></div>
           <div class="grid2" style="margin-top:10px">
             <div>
@@ -81,37 +112,47 @@
 
         <div class="card">
           <h2>③ 素材（任意）</h2>
-          <div class="desc">素材なしでも利用できます。素材画像を入れると、色だけでなく質感も重ねられます。</div>
+          <div class="desc">素材なしでも使えます。素材画像を入れると質感も重ねられます。</div>
           <label class="file-label" for="materialInput">素材画像を選択</label>
           <input id="materialInput" type="file" accept="image/png,image/jpeg,image/webp" />
           <div id="materialsGrid" class="materials" style="margin-top:10px"></div>
         </div>
 
         <div class="card">
-          <h2>④ 生成方式</h2>
-          <div class="desc">営業向けは通常「AI自動」で十分です。検出がずれた場合のみ簡易補正を使います。</div>
-          <div class="toggle">
-            <button id="aiModeBtn" class="primary">AI自動検出</button>
-            <button id="assistModeBtn">簡易補正</button>
-          </div>
-          <div class="hint" style="margin-top:10px">
-            AI自動検出では、建物領域を自動で推定して外装色を適用します。まれに空や道路まで拾う場合があるため、そのときだけ「簡易補正」で対象範囲を絞れます。
-          </div>
-          <div id="assistAreaBox" style="display:none;margin-top:12px">
-            <div class="grid2">
-              <div><label class="label">左余白 (%)</label><input id="assistLeft" type="text" value="10" /></div>
-              <div><label class="label">右余白 (%)</label><input id="assistRight" type="text" value="10" /></div>
-              <div><label class="label">上余白 (%)</label><input id="assistTop" type="text" value="12" /></div>
-              <div><label class="label">下余白 (%)</label><input id="assistBottom" type="text" value="18" /></div>
+          <h2>④ 加工エリアを指定</h2>
+          <div class="desc">どのエリアを加工するか選べます。通常は「全面」または「中央」で十分です。</div>
+          <select id="areaMode">
+            <option value="full">全面</option>
+            <option value="upper">上部のみ</option>
+            <option value="center">中央のみ</option>
+            <option value="lower">下部のみ</option>
+            <option value="left">左側のみ</option>
+            <option value="right">右側のみ</option>
+            <option value="manual">手動指定</option>
+          </select>
+          <div id="manualBox" style="display:none;margin-top:12px">
+            <div class="hint">プレビュー上をドラッグして加工エリアを指定してください。複数回やり直せます。</div>
+            <div class="tool-row" style="margin-top:10px">
+              <button id="enableDrawBtn">手動エリアを描く</button>
+              <button id="clearAreaBtn">手動エリアをクリア</button>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <h2>⑤ 生成する</h2>
-          <div class="desc">写真と色を入れたら、基本はこのボタンだけです。</div>
+          <h2>⑤ 生成方式</h2>
+          <div class="desc">安定優先の自動推定です。建物らしい中央領域を自動で抽出し、選択エリアとの掛け合わせで加工します。</div>
+          <div class="hint">
+            この版は「失敗しない」ことを優先し、ブラウザ上の重いAIモデルを使っていません。<br>
+            自動推定で建物中心領域を抽出し、営業で使える提案画像を安定して出力します。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>⑥ 生成する</h2>
+          <div class="desc">写真と色を入れたら、このボタンを押すだけです。</div>
           <div class="row">
-            <button id="generateBtn" class="primary" disabled>AI自動検出で提案生成</button>
+            <button id="generateBtn" class="primary" disabled>提案生成</button>
             <button id="clearBtn" disabled>リセット</button>
           </div>
           <div class="status" style="margin-top:12px">
@@ -124,18 +165,21 @@
       <div class="section">
         <div class="card">
           <h2>提案プレビュー</h2>
-          <div class="desc">Before / After を並べて表示します。顧客へ見せる説明にそのまま使えます。</div>
+          <div class="desc">Before / After を並べて表示します。顧客にそのまま見せられる構成です。</div>
           <div class="compare-note">
-            <span class="pill" id="modePill">モード：AI自動検出</span>
+            <span class="pill" id="areaPill">加工エリア：全面</span>
             <span class="pill" id="selectionPill">選択色：未選択</span>
             <span class="pill" id="materialPill">素材：なし</span>
           </div>
           <div class="preview-wrap">
-            <div id="placeholder" class="placeholder">
-              <div style="font-size:18px;font-weight:700;margin-bottom:8px">まず建物の外観写真をアップロードしてください</div>
-              <div class="small">AIで自動検出し、ワンクリックで提案画像を生成します。</div>
+            <div class="preview-stack">
+              <div id="placeholder" class="placeholder">
+                <div style="font-size:18px;font-weight:700;margin-bottom:8px">まず建物の外観写真をアップロードしてください</div>
+                <div class="small">加工エリアも選べる、営業向け安定版です。</div>
+              </div>
+              <canvas id="editCanvas" width="1100" height="620" style="display:none"></canvas>
+              <canvas id="compareCanvas" width="1400" height="820" style="display:none"></canvas>
             </div>
-            <canvas id="compareCanvas" width="1400" height="820" style="display:none"></canvas>
           </div>
         </div>
 
@@ -145,7 +189,8 @@
           <ol style="margin:0;padding-left:20px;line-height:2;color:#64748b;font-size:14px">
             <li>建物写真を入れる</li>
             <li>色を1つ選ぶ</li>
-            <li>「AI自動検出で提案生成」を押す</li>
+            <li>加工エリアを選ぶ</li>
+            <li>提案生成を押す</li>
             <li>必要ならPDF出力して提案資料に添付する</li>
           </ol>
         </div>
@@ -153,10 +198,9 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <script>
-    const STORAGE_KEY='iseyatech-sales-ai-phase2-v1';
+    const STORAGE_KEY='iseyatech-sales-stable-area-v1';
     const PRESET_COLORS=[
       {code:'N-90',name:'ホワイト',hex:'#F3F3EF'},
       {code:'N-70',name:'ライトグレー',hex:'#C8C8C0'},
@@ -165,172 +209,557 @@
       {code:'N-20',name:'チャコール',hex:'#474742'},
       {code:'BROWN-01',name:'ダークブラウン',hex:'#5D4636'}
     ];
-    const AI_LABEL_CANDIDATES=['building','house','skyscraper','wall','facade'];
-    const state={projectName:'外装塗装提案',customerName:'',baseImageFileName:'',baseImageDataUrl:null,baseImage:null,material:null,selectedColor:null,mode:'ai',segmentationPipeline:null,maskCanvas:null,resultCanvas:null,compareCanvas:null};
-    const $=(id)=>document.getElementById(id); const compareCanvas=$('compareCanvas'); const compareCtx=compareCanvas.getContext('2d');
+    const AREA_LABELS={
+      full:'全面', upper:'上部のみ', center:'中央のみ', lower:'下部のみ', left:'左側のみ', right:'右側のみ', manual:'手動指定'
+    };
 
-    function normalizeHex(value){if(!value)return null; const v=value.trim(); if(/^#([0-9a-fA-F]{6})$/.test(v))return v; if(/^([0-9a-fA-F]{6})$/.test(v))return '#'+v; if(/^#([0-9a-fA-F]{3})$/.test(v))return v; if(/^([0-9a-fA-F]{3})$/.test(v))return '#'+v; return null;}
-    function hexToRgb(hex){const h=normalizeHex(hex)||'#c9c9c9'; const raw=h.replace('#',''); if(raw.length===3){return {r:parseInt(raw[0]+raw[0],16),g:parseInt(raw[1]+raw[1],16),b:parseInt(raw[2]+raw[2],16)}} return {r:parseInt(raw.slice(0,2),16),g:parseInt(raw.slice(2,4),16),b:parseInt(raw.slice(4,6),16)};}
-    function setStatus(message, ok=false){const box=$('statusBox'); box.textContent=message; box.className='status-box'+(ok?' ok':'');}
-    function fitRect(imgW,imgH,maxW,maxH){const scale=Math.min(maxW/imgW,maxH/imgH,1); return {width:Math.round(imgW*scale),height:Math.round(imgH*scale),scale};}
-    function fileToDataUrl(file){return new Promise((resolve,reject)=>{const fr=new FileReader(); fr.onload=()=>resolve(fr.result); fr.onerror=reject; fr.readAsDataURL(file);});}
-    function loadImage(url){return new Promise((resolve,reject)=>{const img=new Image(); img.onload=()=>resolve(img); img.onerror=reject; img.crossOrigin='anonymous'; img.src=url;});}
+    const state={
+      projectName:'外装塗装提案',
+      customerName:'',
+      baseImage:null,
+      baseImageDataUrl:null,
+      baseImageFileName:'',
+      material:null,
+      selectedColor:null,
+      areaMode:'full',
+      editScale:1,
+      editW:1100,
+      editH:620,
+      buildingMask:null,
+      areaMask:null,
+      manualRect:null,
+      compareCanvas:null,
+      drawing:false,
+      drawStart:null,
+      draftRect:null
+    };
+
+    const $=(id)=>document.getElementById(id);
+    const editCanvas=$('editCanvas');
+    const editCtx=editCanvas.getContext('2d');
+    const compareCanvas=$('compareCanvas');
+    const compareCtx=compareCanvas.getContext('2d');
+
+    function normalizeHex(value){
+      if(!value) return null;
+      const v=value.trim();
+      if(/^#([0-9a-fA-F]{6})$/.test(v)) return v;
+      if(/^([0-9a-fA-F]{6})$/.test(v)) return '#'+v;
+      if(/^#([0-9a-fA-F]{3})$/.test(v)) return v;
+      if(/^([0-9a-fA-F]{3})$/.test(v)) return '#'+v;
+      return null;
+    }
+    function hexToRgb(hex){
+      const h=normalizeHex(hex)||'#c9c9c9';
+      const raw=h.replace('#','');
+      if(raw.length===3){
+        return {r:parseInt(raw[0]+raw[0],16),g:parseInt(raw[1]+raw[1],16),b:parseInt(raw[2]+raw[2],16)};
+      }
+      return {r:parseInt(raw.slice(0,2),16),g:parseInt(raw.slice(2,4),16),b:parseInt(raw.slice(4,6),16)};
+    }
+    function setStatus(message, mode='normal'){
+      const box=$('statusBox');
+      box.textContent=message;
+      box.className='status-box' + (mode==='ok' ? ' ok' : mode==='warn' ? ' warn' : '');
+    }
+    function fileToDataUrl(file){
+      return new Promise((resolve,reject)=>{
+        const fr=new FileReader();
+        fr.onload=()=>resolve(fr.result);
+        fr.onerror=reject;
+        fr.readAsDataURL(file);
+      });
+    }
+    function loadImage(url){
+      return new Promise((resolve,reject)=>{
+        const img=new Image();
+        img.onload=()=>resolve(img);
+        img.onerror=reject;
+        img.crossOrigin='anonymous';
+        img.src=url;
+      });
+    }
+    function fitRect(imgW,imgH,maxW,maxH){
+      const scale=Math.min(maxW/imgW,maxH/imgH,1);
+      return {width:Math.round(imgW*scale),height:Math.round(imgH*scale),scale};
+    }
 
     function renderSwatches(){
-      const box=$('swatches'); box.innerHTML='';
-      PRESET_COLORS.forEach((color)=>{const item=document.createElement('button'); item.className='swatch'+(state.selectedColor?.code===color.code?' active':'');
+      const box=$('swatches');
+      box.innerHTML='';
+      PRESET_COLORS.forEach(color=>{
+        const item=document.createElement('button');
+        item.className='swatch'+(state.selectedColor?.code===color.code?' active':'');
         item.innerHTML=`<div class="chip" style="background:${color.hex}"></div><div style="font-weight:700">${color.code}</div><div class="small">${color.name}</div>`;
-        item.onclick=()=>{state.selectedColor=color; $('selectionPill').textContent=`選択色：${color.code} / ${color.name}`; renderSwatches(); updateGenerateButton();};
+        item.onclick=()=>{
+          state.selectedColor=color;
+          $('selectionPill').textContent=`選択色：${color.code} / ${color.name}`;
+          renderSwatches();
+          updateGenerateButton();
+        };
         box.appendChild(item);
       });
     }
+
     function renderMaterial(){
-      const box=$('materialsGrid'); box.innerHTML='';
-      if(!state.material){$('materialPill').textContent='素材：なし'; return;}
-      const item=document.createElement('div'); item.className='material active'; item.innerHTML=`<img src="${state.material.previewUrl}" alt=""><div class="small" style="margin-top:6px">${state.material.name}</div>`;
-      box.appendChild(item); $('materialPill').textContent=`素材：${state.material.name}`;
-    }
-    function updateGenerateButton(){ $('generateBtn').disabled=!(state.baseImage && state.selectedColor); $('clearBtn').disabled=!state.baseImage; $('downloadJpgBtn').disabled=!state.compareCanvas; $('downloadPdfBtn').disabled=!state.compareCanvas; }
-
-    async function ensurePipeline(){
-      if(state.segmentationPipeline) return state.segmentationPipeline;
-      setStatus('AIモデルを読み込んでいます。初回のみ30〜90秒ほどかかる場合があります。');
-      const { pipeline } = window.transformers;
-      state.segmentationPipeline = await pipeline('image-segmentation', 'Xenova/detr-resnet-50-panoptic');
-      setStatus('AIモデルの準備ができました。', true);
-      return state.segmentationPipeline;
+      const box=$('materialsGrid');
+      box.innerHTML='';
+      if(!state.material){
+        $('materialPill').textContent='素材：なし';
+        return;
+      }
+      const item=document.createElement('div');
+      item.className='material active';
+      item.innerHTML=`<img src="${state.material.previewUrl}" alt=""><div class="small" style="margin-top:6px">${state.material.name}</div>`;
+      box.appendChild(item);
+      $('materialPill').textContent=`素材：${state.material.name}`;
     }
 
-    function createAssistMask(width,height){
-      const c=document.createElement('canvas'); c.width=width; c.height=height; const ctx=c.getContext('2d');
-      const left=Math.max(0,Math.min(45,Number($('assistLeft').value||10))); const right=Math.max(0,Math.min(45,Number($('assistRight').value||10)));
-      const top=Math.max(0,Math.min(45,Number($('assistTop').value||12))); const bottom=Math.max(0,Math.min(45,Number($('assistBottom').value||18)));
-      const x=width*left/100, y=height*top/100, w=width-(width*left/100)-(width*right/100), h=height-(height*top/100)-(height*bottom/100);
-      ctx.fillStyle='#fff'; ctx.fillRect(x,y,w,h); return c;
+    function updateGenerateButton(){
+      $('generateBtn').disabled=!(state.baseImage && state.selectedColor);
+      $('clearBtn').disabled=!state.baseImage;
+      $('downloadJpgBtn').disabled=!state.compareCanvas;
+      $('downloadPdfBtn').disabled=!state.compareCanvas;
+      $('areaPill').textContent=`加工エリア：${AREA_LABELS[state.areaMode]}`;
     }
-    function createFallbackBuildingMask(image){
-      const c=document.createElement('canvas'); c.width=image.width; c.height=image.height; const ctx=c.getContext('2d');
-      ctx.fillStyle='#000'; ctx.fillRect(0,0,c.width,c.height); ctx.fillStyle='#fff'; ctx.fillRect(c.width*0.12,c.height*0.15,c.width*0.76,c.height*0.68); return c;
+
+    function createBuildingMask(image){
+      const c=document.createElement('canvas');
+      c.width=image.width; c.height=image.height;
+      const ctx=c.getContext('2d');
+      ctx.clearRect(0,0,c.width,c.height);
+
+      const left=c.width*0.12;
+      const top=c.height*0.14;
+      const w=c.width*0.76;
+      const h=c.height*0.70;
+
+      ctx.fillStyle='#ffffff';
+      ctx.beginPath();
+      ctx.roundRect(left, top, w, h, 14);
+      ctx.fill();
+
+      return c;
     }
-    async function buildAIMask(image){
-      const segmenter=await ensurePipeline(); const result=await segmenter(image);
-      const maskCanvas=document.createElement('canvas'); maskCanvas.width=image.width; maskCanvas.height=image.height; const maskCtx=maskCanvas.getContext('2d');
-      maskCtx.fillStyle='#000'; maskCtx.fillRect(0,0,maskCanvas.width,maskCanvas.height);
-      let matched=0;
-      if(Array.isArray(result)){
-        for(const item of result){
-          const label=String(item.label||'').toLowerCase(); if(!AI_LABEL_CANDIDATES.includes(label)) continue;
-          if(item.mask){
-            const temp=document.createElement('canvas'); temp.width=item.mask.width || image.width; temp.height=item.mask.height || image.height; const tctx=temp.getContext('2d');
-            try{
-              if(item.mask.data){
-                const data=item.mask.data; const imgData=tctx.createImageData(temp.width,temp.height);
-                for(let i=0;i<temp.width*temp.height;i++){const value=data[i]||0; imgData.data[i*4+0]=255; imgData.data[i*4+1]=255; imgData.data[i*4+2]=255; imgData.data[i*4+3]=value>0?255:0;}
-                tctx.putImageData(imgData,0,0);
-              } else if(item.mask.toCanvas){tctx.drawImage(item.mask.toCanvas(),0,0);}
-              else if(item.mask instanceof HTMLCanvasElement){tctx.drawImage(item.mask,0,0);}
-              else if(item.mask instanceof ImageBitmap || item.mask instanceof HTMLImageElement){tctx.drawImage(item.mask,0,0);}
-              maskCtx.drawImage(temp,0,0,maskCanvas.width,maskCanvas.height); matched++;
-            }catch(e){console.warn('mask skip',e);}
-          }
+
+    function createAreaMask(mode, image){
+      const c=document.createElement('canvas');
+      c.width=image.width; c.height=image.height;
+      const ctx=c.getContext('2d');
+      ctx.clearRect(0,0,c.width,c.height);
+      ctx.fillStyle='#ffffff';
+
+      if(mode==='full'){
+        ctx.fillRect(0,0,c.width,c.height);
+      }else if(mode==='upper'){
+        ctx.fillRect(c.width*0.10,c.height*0.08,c.width*0.80,c.height*0.32);
+      }else if(mode==='center'){
+        ctx.fillRect(c.width*0.15,c.height*0.22,c.width*0.70,c.height*0.36);
+      }else if(mode==='lower'){
+        ctx.fillRect(c.width*0.10,c.height*0.52,c.width*0.80,c.height*0.26);
+      }else if(mode==='left'){
+        ctx.fillRect(c.width*0.08,c.height*0.10,c.width*0.42,c.height*0.72);
+      }else if(mode==='right'){
+        ctx.fillRect(c.width*0.50,c.height*0.10,c.width*0.42,c.height*0.72);
+      }else if(mode==='manual'){
+        if(state.manualRect){
+          const r=state.manualRect;
+          ctx.fillRect(r.x, r.y, r.w, r.h);
         }
       }
-      if(!matched) return createFallbackBuildingMask(image);
-      return maskCanvas;
+      return c;
     }
-    function refineMaskWithAssist(baseMask){
-      if(state.mode!=='assist') return baseMask;
-      const assistMask=createAssistMask(baseMask.width,baseMask.height);
-      const c=document.createElement('canvas'); c.width=baseMask.width; c.height=baseMask.height; const ctx=c.getContext('2d');
-      ctx.drawImage(baseMask,0,0); ctx.globalCompositeOperation='destination-in'; ctx.drawImage(assistMask,0,0); return c;
+
+    function mergeMasks(buildingMask, areaMask){
+      const c=document.createElement('canvas');
+      c.width=buildingMask.width; c.height=buildingMask.height;
+      const ctx=c.getContext('2d');
+      ctx.drawImage(buildingMask,0,0);
+      ctx.globalCompositeOperation='destination-in';
+      ctx.drawImage(areaMask,0,0);
+      return c;
     }
-    function applyColorAndMaterial(image,maskCanvas,color,material){
-      const result=document.createElement('canvas'); result.width=image.width; result.height=image.height; const ctx=result.getContext('2d');
+
+    function applyColorAndMaterial(image, maskCanvas, color, material){
+      const result=document.createElement('canvas');
+      result.width=image.width; result.height=image.height;
+      const ctx=result.getContext('2d');
       ctx.drawImage(image,0,0);
-      const overlay=document.createElement('canvas'); overlay.width=image.width; overlay.height=image.height; const octx=overlay.getContext('2d');
-      octx.drawImage(maskCanvas,0,0); octx.globalCompositeOperation='source-in';
-      const {r,g,b}=hexToRgb(color.hex); octx.fillStyle=`rgba(${r},${g},${b},0.52)`; octx.fillRect(0,0,overlay.width,overlay.height);
+
+      const overlay=document.createElement('canvas');
+      overlay.width=image.width; overlay.height=image.height;
+      const octx=overlay.getContext('2d');
+
+      octx.drawImage(maskCanvas,0,0);
+      octx.globalCompositeOperation='source-in';
+
+      const {r,g,b}=hexToRgb(color.hex);
+      octx.fillStyle=`rgba(${r},${g},${b},0.54)`;
+      octx.fillRect(0,0,overlay.width,overlay.height);
+
       if(material?.image){
-        const p=document.createElement('canvas'); p.width=180; p.height=180; const pctx=p.getContext('2d'); pctx.drawImage(material.image,0,0,180,180);
-        const pattern=octx.createPattern(p,'repeat'); octx.globalCompositeOperation='overlay'; octx.globalAlpha=0.36; octx.fillStyle=pattern; octx.fillRect(0,0,overlay.width,overlay.height); octx.globalAlpha=1;
+        const p=document.createElement('canvas');
+        p.width=180; p.height=180;
+        const pctx=p.getContext('2d');
+        pctx.drawImage(material.image,0,0,180,180);
+        const pattern=octx.createPattern(p,'repeat');
+        octx.globalCompositeOperation='overlay';
+        octx.globalAlpha=0.34;
+        octx.fillStyle=pattern;
+        octx.fillRect(0,0,overlay.width,overlay.height);
+        octx.globalAlpha=1;
       }
-      ctx.drawImage(overlay,0,0); return result;
+
+      ctx.drawImage(overlay,0,0);
+      return result;
     }
-    function buildCompare(beforeImage,afterCanvas){
-      const fitted=fitRect(beforeImage.width,beforeImage.height,620,680); const margin=40, titleH=80, labelH=40;
-      compareCanvas.width=fitted.width*2 + margin*3; compareCanvas.height=fitted.height + titleH + labelH + margin*2;
-      compareCtx.fillStyle='#fff'; compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height);
-      compareCtx.fillStyle='#0f172a'; compareCtx.font='bold 28px sans-serif'; compareCtx.fillText(state.projectName||'外装塗装提案',margin,42);
-      compareCtx.font='14px sans-serif'; compareCtx.fillStyle='#64748b';
-      const sub=`${state.customerName ? state.customerName + ' / ' : ''}${state.selectedColor.code} ${state.selectedColor.name}${state.material ? ' / 素材あり' : ' / 素材なし'}`;
-      compareCtx.fillText(sub,margin,66);
+
+    function buildCompare(beforeImage, afterCanvas){
+      const fitted=fitRect(beforeImage.width,beforeImage.height,620,680);
+      const margin=40, titleH=80, labelH=40;
+      compareCanvas.width=fitted.width*2 + margin*3;
+      compareCanvas.height=fitted.height + titleH + labelH + margin*2;
+
+      compareCtx.fillStyle='#ffffff';
+      compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height);
+
+      compareCtx.fillStyle='#0f172a';
+      compareCtx.font='bold 28px sans-serif';
+      compareCtx.fillText(state.projectName || '外装塗装提案', margin, 42);
+
+      compareCtx.font='14px sans-serif';
+      compareCtx.fillStyle='#64748b';
+      const sub=`${state.customerName ? state.customerName + ' / ' : ''}${state.selectedColor.code} ${state.selectedColor.name} / ${AREA_LABELS[state.areaMode]}${state.material ? ' / 素材あり' : ' / 素材なし'}`;
+      compareCtx.fillText(sub, margin, 66);
+
       const y=titleH+margin, x1=margin, x2=margin*2+fitted.width;
-      compareCtx.strokeStyle='#e2e8f0'; compareCtx.lineWidth=1; compareCtx.strokeRect(x1,y,fitted.width,fitted.height); compareCtx.strokeRect(x2,y,fitted.width,fitted.height);
-      compareCtx.drawImage(beforeImage,x1,y,fitted.width,fitted.height); compareCtx.drawImage(afterCanvas,x2,y,fitted.width,fitted.height);
-      compareCtx.fillStyle='#0f172a'; compareCtx.font='bold 18px sans-serif'; compareCtx.fillText('Before',x1,y+fitted.height+28); compareCtx.fillText('After',x2,y+fitted.height+28);
+      compareCtx.strokeStyle='#e2e8f0';
+      compareCtx.lineWidth=1;
+      compareCtx.strokeRect(x1,y,fitted.width,fitted.height);
+      compareCtx.strokeRect(x2,y,fitted.width,fitted.height);
+      compareCtx.drawImage(beforeImage,x1,y,fitted.width,fitted.height);
+      compareCtx.drawImage(afterCanvas,x2,y,fitted.width,fitted.height);
+
+      compareCtx.fillStyle='#0f172a';
+      compareCtx.font='bold 18px sans-serif';
+      compareCtx.fillText('Before', x1, y+fitted.height+28);
+      compareCtx.fillText('After', x2, y+fitted.height+28);
+
       state.compareCanvas=compareCanvas;
     }
+
     function calculateMaskRatio(maskCanvas){
-      const data=maskCanvas.getContext('2d').getImageData(0,0,maskCanvas.width,maskCanvas.height).data; let on=0; const total=maskCanvas.width*maskCanvas.height;
-      for(let i=0;i<total;i++){ if(data[i*4+3]>0) on++; } return ((on/total)*100).toFixed(1);
+      const data=maskCanvas.getContext('2d').getImageData(0,0,maskCanvas.width,maskCanvas.height).data;
+      let on=0; const total=maskCanvas.width*maskCanvas.height;
+      for(let i=0;i<total;i++){ if(data[i*4+3]>0) on++; }
+      return ((on/total)*100).toFixed(1);
     }
+
+    function renderEditPreview(){
+      if(!state.baseImage){
+        $('editCanvas').style.display='none';
+        return;
+      }
+      const fitted=fitRect(state.baseImage.width,state.baseImage.height,1100,620);
+      editCanvas.width=fitted.width;
+      editCanvas.height=fitted.height;
+      state.editScale=fitted.width / state.baseImage.width;
+
+      editCtx.clearRect(0,0,editCanvas.width,editCanvas.height);
+      editCtx.drawImage(state.baseImage,0,0,editCanvas.width,editCanvas.height);
+
+      const buildingMask=createBuildingMask(state.baseImage);
+      const areaMask=createAreaMask(state.areaMode, state.baseImage);
+      const merged=mergeMasks(buildingMask, areaMask);
+
+      const overlay=document.createElement('canvas');
+      overlay.width=state.baseImage.width; overlay.height=state.baseImage.height;
+      const octx=overlay.getContext('2d');
+      octx.drawImage(merged,0,0);
+      octx.globalCompositeOperation='source-in';
+      octx.fillStyle='rgba(37,99,235,0.20)';
+      octx.fillRect(0,0,overlay.width,overlay.height);
+      editCtx.drawImage(overlay,0,0,editCanvas.width,editCanvas.height);
+
+      if(state.areaMode==='manual'){
+        if(state.manualRect){
+          drawRectGuide(state.manualRect,'rgba(16,185,129,0.95)','rgba(16,185,129,0.12)');
+        }
+        if(state.draftRect){
+          drawRectGuide(state.draftRect,'rgba(239,68,68,0.95)','rgba(239,68,68,0.10)');
+        }
+      }
+
+      $('editCanvas').style.display='block';
+
+      function drawRectGuide(r, stroke, fill){
+        editCtx.save();
+        editCtx.lineWidth=2;
+        editCtx.setLineDash([8,6]);
+        editCtx.strokeStyle=stroke;
+        editCtx.fillStyle=fill;
+        editCtx.fillRect(r.x*state.editScale, r.y*state.editScale, r.w*state.editScale, r.h*state.editScale);
+        editCtx.strokeRect(r.x*state.editScale, r.y*state.editScale, r.w*state.editScale, r.h*state.editScale);
+        editCtx.restore();
+      }
+    }
+
     async function generateProposal(){
       if(!state.baseImage || !state.selectedColor) return;
+      if(state.areaMode==='manual' && !state.manualRect){
+        setStatus('手動指定を選んだ場合は、先に加工エリアを描いてください。','warn');
+        return;
+      }
+
       try{
-        setStatus('AIで建物領域を自動検出しています。'); $('resultSummary').style.display='none';
-        let mask = state.mode==='ai' ? await buildAIMask(state.baseImage) : refineMaskWithAssist(await buildAIMask(state.baseImage));
-        state.maskCanvas=mask;
+        setStatus('加工エリアを計算しています。');
+        state.buildingMask=createBuildingMask(state.baseImage);
+        state.areaMask=createAreaMask(state.areaMode, state.baseImage);
+        const finalMask=mergeMasks(state.buildingMask, state.areaMask);
+
         setStatus('色と素材を合成しています。');
-        const result=applyColorAndMaterial(state.baseImage,mask,state.selectedColor,state.material); state.resultCanvas=result;
-        buildCompare(state.baseImage,result); $('placeholder').style.display='none'; $('compareCanvas').style.display='block';
-        $('resultSummary').style.display='block'; $('resultSummary').innerHTML=`<div><strong>生成完了</strong></div><div>対象色：${state.selectedColor.code} / ${state.selectedColor.name}</div><div>素材：${state.material ? state.material.name : 'なし'}</div><div>推定検出面積：画像全体の ${calculateMaskRatio(mask)}%</div>`;
-        setStatus('提案画像を生成しました。JPGまたはPDFで出力できます。', true); updateGenerateButton();
-      }catch(e){console.error(e); setStatus('AI検出に失敗しました。ネットワーク状況を確認するか、少し時間を置いて再度お試しください。');}
+        const result=applyColorAndMaterial(state.baseImage, finalMask, state.selectedColor, state.material);
+
+        buildCompare(state.baseImage, result);
+        $('placeholder').style.display='none';
+        $('compareCanvas').style.display='block';
+
+        $('resultSummary').style.display='block';
+        $('resultSummary').innerHTML=`<div><strong>生成完了</strong></div><div>対象色：${state.selectedColor.code} / ${state.selectedColor.name}</div><div>加工エリア：${AREA_LABELS[state.areaMode]}</div><div>素材：${state.material ? state.material.name : 'なし'}</div><div>推定加工面積：画像全体の ${calculateMaskRatio(finalMask)}%</div>`;
+        setStatus('提案画像を生成しました。JPGまたはPDFで出力できます。','ok');
+        updateGenerateButton();
+      }catch(e){
+        console.error(e);
+        setStatus('生成に失敗しました。画像を入れ直すか、もう一度お試しください。','warn');
+      }
     }
-    function saveLocal(){
-      const payload={projectName:$('projectName').value,customerName:$('customerName').value,baseImageDataUrl:state.baseImageDataUrl,baseImageFileName:state.baseImageFileName,selectedColor:state.selectedColor,mode:state.mode,material:state.material ? {name:state.material.name,previewUrl:state.material.previewUrl} : null};
-      localStorage.setItem(STORAGE_KEY,JSON.stringify(payload)); setStatus('このブラウザーに保存しました。',true);
-    }
-    async function loadLocal(){
-      const raw=localStorage.getItem(STORAGE_KEY); if(!raw){setStatus('保存済みデータがありません。'); return;}
-      const data=JSON.parse(raw); $('projectName').value=data.projectName||'外装塗装提案'; $('customerName').value=data.customerName||''; state.projectName=$('projectName').value; state.customerName=$('customerName').value;
-      state.baseImageDataUrl=data.baseImageDataUrl||null; state.baseImageFileName=data.baseImageFileName||''; state.selectedColor=data.selectedColor||null; state.mode=data.mode||'ai';
-      if(state.baseImageDataUrl){ state.baseImage=await loadImage(state.baseImageDataUrl); $('baseInfo').textContent=`読み込み済み画像：${state.baseImageFileName || 'saved image'}`; }
-      if(data.material?.previewUrl){ state.material={name:data.material.name,previewUrl:data.material.previewUrl,image:await loadImage(data.material.previewUrl)}; } else { state.material=null; }
-      applyModeUI(); renderSwatches(); renderMaterial(); updateGenerateButton(); setStatus('保存データを読み込みました。',true);
-    }
-    function applyModeUI(){
-      if(state.mode==='ai'){ $('aiModeBtn').className='primary'; $('assistModeBtn').className=''; $('assistAreaBox').style.display='none'; $('modePill').textContent='モード：AI自動検出'; }
-      else { $('aiModeBtn').className=''; $('assistModeBtn').className='primary'; $('assistAreaBox').style.display='block'; $('modePill').textContent='モード：AI自動検出＋簡易補正'; }
-    }
+
     function resetAll(){
-      state.baseImageDataUrl=null; state.baseImage=null; state.baseImageFileName=''; state.material=null; state.maskCanvas=null; state.resultCanvas=null; state.compareCanvas=null;
-      $('baseInfo').textContent=''; $('materialsGrid').innerHTML=''; $('placeholder').style.display='block'; $('compareCanvas').style.display='none'; $('resultSummary').style.display='none'; $('materialPill').textContent='素材：なし';
-      setStatus('待機中です。'); updateGenerateButton();
+      state.baseImage=null;
+      state.baseImageDataUrl=null;
+      state.baseImageFileName='';
+      state.material=null;
+      state.selectedColor=null;
+      state.manualRect=null;
+      state.draftRect=null;
+      state.compareCanvas=null;
+      $('baseInfo').textContent='';
+      $('materialsGrid').innerHTML='';
+      $('placeholder').style.display='block';
+      $('editCanvas').style.display='none';
+      $('compareCanvas').style.display='none';
+      $('resultSummary').style.display='none';
+      $('selectionPill').textContent='選択色：未選択';
+      $('materialPill').textContent='素材：なし';
+      setStatus('待機中です。');
+      renderSwatches();
+      renderMaterial();
+      updateGenerateButton();
     }
+
+    function saveLocal(){
+      const payload={
+        projectName:$('projectName').value,
+        customerName:$('customerName').value,
+        baseImageDataUrl:state.baseImageDataUrl,
+        baseImageFileName:state.baseImageFileName,
+        selectedColor:state.selectedColor,
+        areaMode:state.areaMode,
+        manualRect:state.manualRect,
+        material:state.material ? {name:state.material.name,previewUrl:state.material.previewUrl} : null
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      setStatus('このブラウザーに保存しました。','ok');
+    }
+
+    async function loadLocal(){
+      const raw=localStorage.getItem(STORAGE_KEY);
+      if(!raw){
+        setStatus('保存済みデータがありません。','warn');
+        return;
+      }
+      const data=JSON.parse(raw);
+      $('projectName').value=data.projectName || '外装塗装提案';
+      $('customerName').value=data.customerName || '';
+      state.projectName=$('projectName').value;
+      state.customerName=$('customerName').value;
+      state.baseImageDataUrl=data.baseImageDataUrl || null;
+      state.baseImageFileName=data.baseImageFileName || '';
+      state.selectedColor=data.selectedColor || null;
+      state.areaMode=data.areaMode || 'full';
+      $('areaMode').value=state.areaMode;
+      state.manualRect=data.manualRect || null;
+
+      if(state.baseImageDataUrl){
+        state.baseImage=await loadImage(state.baseImageDataUrl);
+        $('baseInfo').textContent=`読み込み済み画像：${state.baseImageFileName || 'saved image'} / ${state.baseImage.width} × ${state.baseImage.height}`;
+      }
+      if(data.material?.previewUrl){
+        state.material={name:data.material.name, previewUrl:data.material.previewUrl, image:await loadImage(data.material.previewUrl)};
+      }else{
+        state.material=null;
+      }
+      toggleManualBox();
+      renderSwatches();
+      renderMaterial();
+      renderEditPreview();
+      updateGenerateButton();
+      setStatus('保存データを読み込みました。','ok');
+    }
+
+    function toggleManualBox(){
+      $('manualBox').style.display=state.areaMode==='manual' ? 'block' : 'none';
+    }
+
+    function canvasPoint(evt){
+      const rect=editCanvas.getBoundingClientRect();
+      return {
+        x: Math.max(0, Math.min(state.baseImage.width, ((evt.clientX - rect.left) / rect.width) * state.baseImage.width)),
+        y: Math.max(0, Math.min(state.baseImage.height, ((evt.clientY - rect.top) / rect.height) * state.baseImage.height))
+      };
+    }
+
     function downloadJpg(){
       if(!state.compareCanvas) return;
-      state.compareCanvas.toBlob((blob)=>{const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`${($('projectName').value||'proposal').replace(/\s+/g,'-')}-${Date.now()}.jpg`; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);},'image/jpeg',0.92);
+      state.compareCanvas.toBlob(blob=>{
+        const a=document.createElement('a');
+        a.href=URL.createObjectURL(blob);
+        a.download=`${($('projectName').value || 'proposal').replace(/\s+/g,'-')}-${Date.now()}.jpg`;
+        a.click();
+        setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+      }, 'image/jpeg', 0.92);
     }
+
     function downloadPdf(){
       if(!state.compareCanvas) return;
-      const { jsPDF } = window.jspdf; const pdf=new jsPDF({orientation:'landscape',unit:'pt',format:'a4'}); const w=pdf.internal.pageSize.getWidth(), h=pdf.internal.pageSize.getHeight();
-      pdf.setFontSize(20); pdf.text($('projectName').value||'外装塗装提案',36,34);
-      pdf.setFontSize(11); const meta=[ $('customerName').value ? `顧客名：${$('customerName').value}` : null, state.selectedColor ? `選択色：${state.selectedColor.code} / ${state.selectedColor.name} (${state.selectedColor.hex})` : null, `素材：${state.material ? state.material.name : 'なし'}`, `生成方式：${state.mode==='ai' ? 'AI自動検出' : 'AI自動検出＋簡易補正'}`].filter(Boolean);
-      let y=56; meta.forEach(line=>{pdf.text(line,36,y); y+=16;});
-      pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.92),'JPEG',36,100,w-72,h-150); pdf.save(`${($('projectName').value||'proposal').replace(/\s+/g,'-')}.pdf`);
+      const { jsPDF } = window.jspdf;
+      const pdf=new jsPDF({orientation:'landscape', unit:'pt', format:'a4'});
+      const w=pdf.internal.pageSize.getWidth(), h=pdf.internal.pageSize.getHeight();
+      pdf.setFontSize(20);
+      pdf.text($('projectName').value || '外装塗装提案', 36, 34);
+      pdf.setFontSize(11);
+      const meta=[
+        $('customerName').value ? `顧客名：${$('customerName').value}` : null,
+        state.selectedColor ? `選択色：${state.selectedColor.code} / ${state.selectedColor.name} (${state.selectedColor.hex})` : null,
+        `加工エリア：${AREA_LABELS[state.areaMode]}`,
+        `素材：${state.material ? state.material.name : 'なし'}`
+      ].filter(Boolean);
+      let y=56;
+      meta.forEach(line=>{pdf.text(line,36,y); y+=16;});
+      pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.92), 'JPEG', 36, 100, w-72, h-150);
+      pdf.save(`${($('projectName').value || 'proposal').replace(/\s+/g,'-')}.pdf`);
     }
-    async function handleBaseImage(file){ state.baseImageDataUrl=await fileToDataUrl(file); state.baseImage=await loadImage(state.baseImageDataUrl); state.baseImageFileName=file.name; $('baseInfo').textContent=`${file.name} / ${state.baseImage.width} × ${state.baseImage.height}`; updateGenerateButton(); setStatus('写真を読み込みました。提案色を選んで生成してください。',true); }
-    async function handleMaterial(file){ const previewUrl=await fileToDataUrl(file); state.material={name:file.name,previewUrl,image:await loadImage(previewUrl)}; renderMaterial(); setStatus('素材画像を読み込みました。',true); }
+
+    async function handleBaseImage(file){
+      state.baseImageDataUrl=await fileToDataUrl(file);
+      state.baseImage=await loadImage(state.baseImageDataUrl);
+      state.baseImageFileName=file.name;
+      $('baseInfo').textContent=`${file.name} / ${state.baseImage.width} × ${state.baseImage.height}`;
+      renderEditPreview();
+      updateGenerateButton();
+      setStatus('写真を読み込みました。色と加工エリアを選んで生成してください。','ok');
+    }
+
+    async function handleMaterial(file){
+      const previewUrl=await fileToDataUrl(file);
+      state.material={name:file.name, previewUrl, image:await loadImage(previewUrl)};
+      renderMaterial();
+      setStatus('素材画像を読み込みました。','ok');
+    }
+
     function bind(){
-      $('projectName').addEventListener('input',e=>state.projectName=e.target.value); $('customerName').addEventListener('input',e=>state.customerName=e.target.value);
-      $('baseImageInput').addEventListener('change',async e=>{const file=e.target.files[0]; if(file) await handleBaseImage(file);});
-      $('materialInput').addEventListener('change',async e=>{const file=e.target.files[0]; if(file) await handleMaterial(file);});
-      $('applyCustomColorBtn').onclick=()=>{const code=$('customColorCode').value.trim()||'CUSTOM'; const hex=normalizeHex($('customColorHex').value.trim()); if(!hex){setStatus('独自色HEXは #8D8D87 のように入力してください。'); return;} state.selectedColor={code,name:'カスタム色',hex}; $('selectionPill').textContent=`選択色：${code} / カスタム色`; renderSwatches(); updateGenerateButton(); setStatus('独自色を設定しました。',true);};
-      $('aiModeBtn').onclick=()=>{state.mode='ai'; applyModeUI();}; $('assistModeBtn').onclick=()=>{state.mode='assist'; applyModeUI();};
-      $('generateBtn').onclick=generateProposal; $('clearBtn').onclick=resetAll; $('saveLocalBtn').onclick=saveLocal; $('loadLocalBtn').onclick=loadLocal; $('downloadJpgBtn').onclick=downloadJpg; $('downloadPdfBtn').onclick=downloadPdf;
+      $('projectName').addEventListener('input', e=>state.projectName=e.target.value);
+      $('customerName').addEventListener('input', e=>state.customerName=e.target.value);
+
+      $('baseImageInput').addEventListener('change', async e=>{
+        const file=e.target.files[0];
+        if(file) await handleBaseImage(file);
+      });
+
+      $('materialInput').addEventListener('change', async e=>{
+        const file=e.target.files[0];
+        if(file) await handleMaterial(file);
+      });
+
+      $('applyCustomColorBtn').onclick=()=>{
+        const code=$('customColorCode').value.trim() || 'CUSTOM';
+        const hex=normalizeHex($('customColorHex').value.trim());
+        if(!hex){
+          setStatus('独自色HEXは #8D8D87 のように入力してください。','warn');
+          return;
+        }
+        state.selectedColor={code, name:'カスタム色', hex};
+        $('selectionPill').textContent=`選択色：${code} / カスタム色`;
+        renderSwatches();
+        updateGenerateButton();
+        setStatus('独自色を設定しました。','ok');
+      };
+
+      $('areaMode').addEventListener('change', e=>{
+        state.areaMode=e.target.value;
+        toggleManualBox();
+        renderEditPreview();
+        updateGenerateButton();
+      });
+
+      $('enableDrawBtn').onclick=()=>{
+        if(!state.baseImage){
+          setStatus('先に外観写真を入れてください。','warn');
+          return;
+        }
+        setStatus('プレビュー上をドラッグして加工エリアを指定してください。','warn');
+      };
+
+      $('clearAreaBtn').onclick=()=>{
+        state.manualRect=null;
+        state.draftRect=null;
+        renderEditPreview();
+        setStatus('手動エリアをクリアしました。','ok');
+      };
+
+      editCanvas.addEventListener('pointerdown', e=>{
+        if(state.areaMode!=='manual' || !state.baseImage) return;
+        state.drawing=true;
+        state.drawStart=canvasPoint(e);
+        state.draftRect={x:state.drawStart.x,y:state.drawStart.y,w:0,h:0};
+        renderEditPreview();
+      });
+
+      editCanvas.addEventListener('pointermove', e=>{
+        if(!state.drawing || state.areaMode!=='manual') return;
+        const p=canvasPoint(e);
+        const x=Math.min(state.drawStart.x,p.x), y=Math.min(state.drawStart.y,p.y);
+        const w=Math.abs(p.x-state.drawStart.x), h=Math.abs(p.y-state.drawStart.y);
+        state.draftRect={x,y,w,h};
+        renderEditPreview();
+      });
+
+      const finishDraw=()=>{
+        if(!state.drawing) return;
+        state.drawing=false;
+        if(state.draftRect && state.draftRect.w>10 && state.draftRect.h>10){
+          state.manualRect=state.draftRect;
+          setStatus('手動エリアを設定しました。','ok');
+        }
+        state.draftRect=null;
+        renderEditPreview();
+      };
+      editCanvas.addEventListener('pointerup', finishDraw);
+      editCanvas.addEventListener('pointerleave', finishDraw);
+
+      $('generateBtn').onclick=generateProposal;
+      $('clearBtn').onclick=resetAll;
+      $('saveLocalBtn').onclick=saveLocal;
+      $('loadLocalBtn').onclick=loadLocal;
+      $('downloadJpgBtn').onclick=downloadJpg;
+      $('downloadPdfBtn').onclick=downloadPdf;
     }
-    renderSwatches(); renderMaterial(); applyModeUI(); bind(); updateGenerateButton(); setStatus('待機中です。');
+
+    renderSwatches();
+    renderMaterial();
+    bind();
+    updateGenerateButton();
+    setStatus('待機中です。');
   </script>
 </body>
 </html>
