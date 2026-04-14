@@ -3,327 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>伊勢屋テック｜営業専用 外装提案ツール v8</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v10</title>
 <style>
-:root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7;--warn:#fef3c7;--blue:#2563eb;--red:#ef4444;--green:#16a34a}
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
-.wrap{max-width:1720px;margin:0 auto;padding:20px}
-.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
-h1{margin:0 0 8px;font-size:32px}
-.sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:1120px}
-.badge{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:8px}
-.layout{display:grid;grid-template-columns:580px 1fr;gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
-.card h2{font-size:18px;margin:0 0 6px}
-.desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}
-.label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}
-.section{display:grid;gap:16px}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-button, select, input[type="text"], input[type="date"], input[type="range"], .file-label{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
-button,.file-label{cursor:pointer}
-button.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
-button:disabled{opacity:.5;cursor:not-allowed}
-input[type="file"]{display:none}
-input[type="text"], input[type="date"], select{width:100%}
-.palette-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.tab{padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;cursor:pointer}
-.tab.active{background:#111827;color:#fff;border-color:#111827}
-.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}
-.swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
-.chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}
-.materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff}
-.material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
-.status{display:grid;gap:8px}
-.status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}
-.status-box.ok{background:var(--ok)} .status-box.warn{background:var(--warn)}
-.hint{padding:12px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7}
-.compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}
-.preview-wrap{min-height:840px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}
-.preview-stack{display:grid;gap:12px;justify-items:center;width:100%}
-canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}
-.placeholder{text-align:center;color:var(--muted)}
-.range-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
-.face-list{display:grid;gap:8px}
-.face-item{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff}
-.face-item.active{outline:2px solid #94a3b8}
-.small{font-size:12px;color:var(--muted)}
+:root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7;--warn:#fef3c7}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1740px;margin:0 auto;padding:20px}.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;flex-wrap:wrap;margin-bottom:20px}
+h1{margin:0 0 8px;font-size:32px}.sub{color:var(--muted);font-size:14px;line-height:1.8;max-width:1140px}.badge{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:8px}
+.layout{display:grid;grid-template-columns:600px 1fr;gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}.card h2{font-size:18px;margin:0 0 6px}.desc{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7}.label{font-size:13px;font-weight:700;margin-bottom:6px;display:block}
+.section{display:grid;gap:16px}.row{display:flex;gap:8px;flex-wrap:wrap}
+button,select,input[type="text"],input[type="date"],input[type="range"],.file-label{border:1px solid var(--line);background:#fff;color:var(--text);padding:11px 14px;border-radius:12px;font-size:14px}
+button,.file-label{cursor:pointer} button.primary{background:var(--primary);color:#fff;border-color:var(--primary)} button:disabled{opacity:.5;cursor:not-allowed}
+input[type="file"]{display:none} input[type="text"],input[type="date"],select{width:100%}
+.palette-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.tab{padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;cursor:pointer}.tab.active{background:#111827;color:#fff;border-color:#111827}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.swatch{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff;cursor:pointer;text-align:left}.swatch.active{outline:2px solid #94a3b8;background:#f8fafc}
+.chip{width:100%;height:54px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px}.materials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.material{border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff}.material img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.status{display:grid;gap:8px}.status-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:13px;line-height:1.7}.status-box.ok{background:var(--ok)} .status-box.warn{background:var(--warn)}
+.hint{padding:12px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.7}.compare-note{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:12px}.preview-wrap{min-height:860px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}
+.preview-stack{display:grid;gap:12px;justify-items:center;width:100%} canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}.placeholder{text-align:center;color:var(--muted)}
+.face-list{display:grid;gap:8px}.face-item{border:1px solid var(--line);border-radius:14px;padding:10px;background:#fff}.face-item.active{outline:2px solid #94a3b8}.small{font-size:12px;color:var(--muted)}.range-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
 @media (max-width:1100px){.layout{grid-template-columns:1fr}.preview-wrap{min-height:520px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top">
-    <div>
-      <div class="badge">v8 / face material + PDF header fix</div>
-      <h1>営業専用 外装提案ツール v8</h1>
-      <div class="sub">面ごとに個別素材を持てる版です。正面はサイディング、側面は塗装、庇は別素材といった使い分けができます。PDFは文字化けを避けるため、上部情報を含めて画像化して出力する方式に変更しています。</div>
-    </div>
-    <div class="row">
-      <button id="downloadJpgBtn" disabled>JPG出力</button>
-      <button id="downloadPdfBtn" class="primary" disabled>提案書PDF出力</button>
-    </div>
-  </div>
+<div class="top"><div><div class="badge">v10 / material quad live preview</div><h1>営業専用 外装提案ツール v10</h1><div class="sub">v8 をベースに、選択素材の方向調整パラメーターをやめて、素材専用の四角形枠を直接ドラッグで調整する方式に変更しました。四つ角を動かして遠近感を作り、面より大きく取れば柄を細かく、小さく取れば柄を大きくできます。変更はリアルタイムで見えます。面素材を解除したあとも再設定できるよう修正しています。</div></div><div class="row"><button id="downloadJpgBtn" disabled>JPG出力</button><button id="downloadPdfBtn" class="primary" disabled>提案書PDF出力</button></div></div>
 
-  <div class="layout">
-    <div class="section">
-      <div class="card">
-        <h2>案件情報</h2>
-        <div class="desc">提案書の上部に表示します。</div>
-        <label class="label">案件名</label>
-        <input id="projectName" type="text" value="外装塗装提案">
-        <div style="height:10px"></div>
-        <label class="label">顧客名</label>
-        <input id="customerName" type="text" placeholder="例：〇〇様邸">
-        <div style="height:10px"></div>
-        <label class="label">担当者名</label>
-        <input id="ownerName" type="text" placeholder="例：山田太郎">
-        <div style="height:10px"></div>
-        <label class="label">提案日</label>
-        <input id="proposalDate" type="date">
-      </div>
+<div class="layout">
+<div class="section">
+<div class="card"><h2>案件情報</h2><div class="desc">提案書の上部に表示します。</div><label class="label">案件名</label><input id="projectName" type="text" value="外装塗装提案"><div style="height:10px"></div><label class="label">顧客名</label><input id="customerName" type="text" placeholder="例：〇〇様邸"><div style="height:10px"></div><label class="label">担当者名</label><input id="ownerName" type="text" placeholder="例：山田太郎"><div style="height:10px"></div><label class="label">提案日</label><input id="proposalDate" type="date"></div>
 
-      <div class="card">
-        <h2>① 写真</h2>
-        <div class="desc">建物正面の外観写真をアップロードしてください。</div>
-        <label class="file-label" for="baseImageInput">外観写真を選択</label>
-        <input id="baseImageInput" type="file" accept="image/png,image/jpeg,image/webp">
-        <div id="baseInfo" class="small" style="margin-top:10px"></div>
-      </div>
+<div class="card"><h2>① 写真</h2><div class="desc">建物正面の外観写真をアップロードしてください。</div><label class="file-label" for="baseImageInput">外観写真を選択</label><input id="baseImageInput" type="file" accept="image/png,image/jpeg,image/webp"><div id="baseInfo" class="small" style="margin-top:10px"></div></div>
 
-      <div class="card">
-        <h2>② 色</h2>
-        <div class="desc">カテゴリ別に整理した外装向け代表色です。</div>
-        <div id="paletteTabs" class="palette-tabs"></div>
-        <div id="swatches" class="swatches"></div>
-      </div>
+<div class="card"><h2>② 色</h2><div class="desc">面を選択していれば面ごとの色、未選択なら全体デフォルト色を設定します。</div><div id="paletteTabs" class="palette-tabs"></div><div id="swatches" class="swatches"></div></div>
 
-      <div class="card">
-        <h2>③ 全体素材（任意）</h2>
-        <div class="desc">面個別素材がない面には、この全体素材が使われます。</div>
-        <label class="file-label" for="materialInput">全体素材を選択</label>
-        <input id="materialInput" type="file" accept="image/png,image/jpeg,image/webp">
-        <div id="materialsGrid" class="materials" style="margin-top:10px"></div>
-      </div>
+<div class="card"><h2>③ 全体素材（任意）</h2><div class="desc">面個別素材がない面には、この全体素材が使われます。</div><label class="file-label" for="materialInput">全体素材を選択</label><input id="materialInput" type="file" accept="image/png,image/jpeg,image/webp"><div id="materialsGrid" class="materials" style="margin-top:10px"></div></div>
 
-      <div class="card">
-        <h2>④ 面を作る</h2>
-        <div class="desc">正面、側面、庇などを別ポリゴンで分けてください。</div>
-        <div class="row">
-          <button id="startFaceBtn">新しい面を作成</button>
-          <button id="closeFaceBtn">面を確定</button>
-          <button id="deleteFaceBtn">選択面を削除</button>
-        </div>
-        <div class="hint" style="margin-top:10px">
-          面：クリックで頂点追加、ダブルクリックで確定。<br>
-          確定後は頂点ドラッグで形を修正、図形内ドラッグで全体移動できます。
-        </div>
-        <div class="row" style="margin-top:10px">
-          <button id="startCutoutBtn">切り抜き作成</button>
-          <button id="closeCutoutBtn">切り抜きを確定</button>
-          <button id="clearCutoutsBtn">切り抜き全削除</button>
-        </div>
-      </div>
+<div class="card"><h2>④ 面を作る</h2><div class="desc">正面、側面、庇などを別ポリゴンで分けてください。</div><div class="row"><button id="startFaceBtn">新しい面を作成</button><button id="closeFaceBtn">面を確定</button><button id="deleteFaceBtn">選択面を削除</button></div><div class="hint" style="margin-top:10px">面：クリックで頂点追加、ダブルクリックで確定。確定後は頂点ドラッグで形を修正、図形内ドラッグで全体移動できます。</div><div class="row" style="margin-top:10px"><button id="startCutoutBtn">切り抜き作成</button><button id="closeCutoutBtn">切り抜きを確定</button><button id="clearCutoutsBtn">切り抜き全削除</button></div></div>
 
-      <div class="card">
-        <h2>⑤ 面一覧</h2>
-        <div class="desc">調整したい面を選んでください。</div>
-        <div id="faceList" class="face-list"></div>
-      </div>
+<div class="card"><h2>⑤ 面一覧</h2><div class="desc">調整したい面を選んでください。</div><div id="faceList" class="face-list"></div></div>
 
-      <div class="card">
-        <h2>⑥ 選択面の個別素材</h2>
-        <div class="desc">選択面だけ別素材にできます。未設定なら全体素材を使います。</div>
-        <div class="row">
-          <label class="file-label" for="faceMaterialInput">選択面の素材を設定</label>
-          <input id="faceMaterialInput" type="file" accept="image/png,image/jpeg,image/webp">
-          <button id="clearFaceMaterialBtn">選択面素材を解除</button>
-        </div>
-        <div id="faceMaterialBox" class="small" style="margin-top:10px"></div>
-      </div>
+<div class="card"><h2>⑥ 選択面の個別素材・個別色</h2><div class="desc">選択面だけ別素材と別色にできます。未設定なら全体素材・全体色を使います。</div><div class="row"><label class="file-label" for="faceMaterialInput">選択面の素材を設定</label><input id="faceMaterialInput" type="file" accept="image/png,image/jpeg,image/webp"><button id="clearFaceMaterialBtn">選択面素材を解除</button></div><div id="faceMaterialBox" class="small" style="margin-top:10px"></div><div id="faceColorBox" class="small" style="margin-top:6px"></div></div>
 
-      <div class="card">
-        <h2>⑦ 選択面の素材方向調整</h2>
-        <div class="desc">選んだ面ごとに別々の見え方を設定できます。</div>
-        <div class="range-row"><span>素材サイズ</span><span id="faceScaleLabel">100%</span></div>
-        <input id="faceScale" type="range" min="30" max="240" step="1" value="100">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>回転角度</span><span id="faceRotateLabel">0°</span></div>
-        <input id="faceRotate" type="range" min="0" max="360" step="1" value="0">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>水平パース</span><span id="facePerspXLabel">35%</span></div>
-        <input id="facePerspX" type="range" min="-80" max="80" step="1" value="35">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>垂直パース</span><span id="facePerspYLabel">0%</span></div>
-        <input id="facePerspY" type="range" min="-80" max="80" step="1" value="0">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>横流れ補正</span><span id="faceShiftXLabel">18%</span></div>
-        <input id="faceShiftX" type="range" min="-50" max="50" step="1" value="18">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>縦流れ補正</span><span id="faceShiftYLabel">0%</span></div>
-        <input id="faceShiftY" type="range" min="-50" max="50" step="1" value="0">
-      </div>
+<div class="card"><h2>⑦ 素材枠の調整</h2><div class="desc">選択面の素材は、緑の素材枠を直接ドラッグして調整します。四つ角を動かせば遠近感を付けられます。素材枠を面より大きくすると柄が細かく、小さくすると柄が大きく見えます。</div><div class="hint">操作方法<br>・緑の四つ角をドラッグ：素材枠の形を変更<br>・緑の枠内をドラッグ：素材枠全体を移動<br>・「素材枠を面に合わせる」で初期位置に戻す</div><div class="row" style="margin-top:10px"><button id="resetMaterialQuadBtn">素材枠を面に合わせる</button></div></div>
 
-      <div class="card">
-        <h2>⑧ 全体透過度</h2>
-        <div class="range-row"><span>色の透過度</span><span id="colorOpacityLabel">54%</span></div>
-        <input id="colorOpacity" type="range" min="0" max="100" step="1" value="54">
-        <div style="height:10px"></div>
-        <div class="range-row"><span>素材の透過度</span><span id="materialOpacityLabel">32%</span></div>
-        <input id="materialOpacity" type="range" min="0" max="100" step="1" value="32">
-      </div>
+<div class="card"><h2>⑧ 全体透過度</h2><div class="range-row"><span>色の透過度</span><span id="colorOpacityLabel">54%</span></div><input id="colorOpacity" type="range" min="0" max="100" step="1" value="54"><div style="height:10px"></div><div class="range-row"><span>素材の透過度</span><span id="materialOpacityLabel">32%</span></div><input id="materialOpacity" type="range" min="0" max="100" step="1" value="32"></div>
 
-      <div class="card">
-        <h2>⑨ 生成</h2>
-        <div class="desc">青が各面、赤が切り抜きです。各面の素材方向と個別素材が良ければ生成してください。</div>
-        <div class="row">
-          <button id="generateBtn" class="primary" disabled>提案生成</button>
-          <button id="resetBtn" disabled>リセット</button>
-        </div>
-        <div class="status" style="margin-top:12px">
-          <div id="statusBox" class="status-box">待機中です。</div>
-          <div id="resultSummary" class="status-box" style="display:none"></div>
-        </div>
-      </div>
-    </div>
+<div class="card"><h2>⑨ 生成</h2><div class="desc">青が各面、赤が切り抜き、緑が選択面の素材枠です。素材枠はリアルタイムでプレビューに反映されます。</div><div class="row"><button id="generateBtn" class="primary" disabled>提案生成</button><button id="resetBtn" disabled>リセット</button></div><div class="status" style="margin-top:12px"><div id="statusBox" class="status-box">待機中です。</div><div id="resultSummary" class="status-box" style="display:none"></div></div></div>
+</div>
 
-    <div class="section">
-      <div class="card">
-        <h2>マスク確認 / 提案プレビュー</h2>
-        <div class="desc">青が各面、赤が切り抜き対象です。PDFはこの表示内容を画像として出すため、文字化けしません。</div>
-        <div class="compare-note">
-          <span class="pill" id="selectionPill">選択色：未選択</span>
-          <span class="pill" id="materialPill">全体素材：なし</span>
-          <span class="pill" id="facePill">選択面：なし</span>
-        </div>
-        <div class="preview-wrap">
-          <div class="preview-stack">
-            <div id="placeholder" class="placeholder">
-              <div style="font-size:18px;font-weight:700;margin-bottom:8px">まず建物の外観写真をアップロードしてください</div>
-              <div class="small">面ごとに個別素材を持てます。</div>
-            </div>
-            <canvas id="editCanvas" width="1100" height="620" style="display:none"></canvas>
-            <canvas id="compareCanvas" width="1400" height="980" style="display:none"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="section">
+<div class="card"><h2>マスク確認 / 提案プレビュー</h2><div class="desc">青が各面、赤が切り抜き、緑が選択面の素材枠です。素材枠の変更はリアルタイムで見えます。</div><div class="compare-note"><span class="pill" id="selectionPill">選択色：未選択</span><span class="pill" id="materialPill">全体素材：なし</span><span class="pill" id="facePill">選択面：なし</span></div><div class="preview-wrap"><div class="preview-stack"><div id="placeholder" class="placeholder"><div style="font-size:18px;font-weight:700;margin-bottom:8px">まず建物の外観写真をアップロードしてください</div><div class="small">素材枠を直接ドラッグして調整できます。</div></div><canvas id="editCanvas" width="1100" height="620" style="display:none"></canvas><canvas id="compareCanvas" width="1400" height="980" style="display:none"></canvas></div></div></div>
+</div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script>
-const PALETTES={
-  'ホワイト・ライト':[{code:'W-01',name:'オフホワイト',hex:'#F3F1EA'},{code:'W-02',name:'ソフトホワイト',hex:'#EDEBE3'},{code:'W-03',name:'クールホワイト',hex:'#E6E8E7'},{code:'W-04',name:'アイボリー',hex:'#E9E0CF'},{code:'W-05',name:'ウォームベージュ',hex:'#DED4C2'},{code:'W-06',name:'ライトサンド',hex:'#D8D0C5'}],
-  'グレー':[{code:'G-01',name:'ライトグレー',hex:'#C8C8C0'},{code:'G-02',name:'シルバーグレー',hex:'#B8B8B0'},{code:'G-03',name:'ミドルグレー',hex:'#8D8D87'},{code:'G-04',name:'スチールグレー',hex:'#767977'},{code:'G-05',name:'チャコール',hex:'#474742'},{code:'G-06',name:'スレート',hex:'#585C61'}],
-  'ベージュ・グレージュ':[{code:'B-01',name:'グレージュ',hex:'#7C7469'},{code:'B-02',name:'サンドベージュ',hex:'#B79F86'},{code:'B-03',name:'モカベージュ',hex:'#9D8C77'},{code:'B-04',name:'ストーン',hex:'#8F877C'},{code:'B-05',name:'トープ',hex:'#7B6F63'},{code:'B-06',name:'クレイ',hex:'#A38C76'}],
-  'ブラウン':[{code:'BR-01',name:'ダークブラウン',hex:'#5D4636'},{code:'BR-02',name:'ブラウン',hex:'#725747'},{code:'BR-03',name:'ココア',hex:'#8A6A54'},{code:'BR-04',name:'ウォルナット',hex:'#654E42'},{code:'BR-05',name:'セピア',hex:'#5B4B3E'},{code:'BR-06',name:'モカ',hex:'#7B5D4A'}],
-  'アクセント':[{code:'A-01',name:'ネイビー',hex:'#3F5168'},{code:'A-02',name:'ブルーグレー',hex:'#6C7D8B'},{code:'A-03',name:'グリーングレー',hex:'#7C8A7A'},{code:'A-04',name:'オリーブ',hex:'#7C7660'},{code:'A-05',name:'テラコッタ',hex:'#9A6C58'},{code:'A-06',name:'ボルドーブラウン',hex:'#6B4B45'}]
-};
+const PALETTES={'ホワイト・ライト':[{"code":"W-01","name":"オフホワイト","hex":"#F3F1EA"},{"code":"W-02","name":"ソフトホワイト","hex":"#EDEBE3"},{"code":"W-03","name":"クールホワイト","hex":"#E6E8E7"},{"code":"W-04","name":"アイボリー","hex":"#E9E0CF"},{"code":"W-05","name":"ウォームベージュ","hex":"#DED4C2"},{"code":"W-06","name":"ライトサンド","hex":"#D8D0C5"}],'グレー':[{"code":"G-01","name":"ライトグレー","hex":"#C8C8C0"},{"code":"G-02","name":"シルバーグレー","hex":"#B8B8B0"},{"code":"G-03","name":"ミドルグレー","hex":"#8D8D87"},{"code":"G-04","name":"スチールグレー","hex":"#767977"},{"code":"G-05","name":"チャコール","hex":"#474742"},{"code":"G-06","name":"スレート","hex":"#585C61"}],'ベージュ・グレージュ':[{"code":"B-01","name":"グレージュ","hex":"#7C7469"},{"code":"B-02","name":"サンドベージュ","hex":"#B79F86"},{"code":"B-03","name":"モカベージュ","hex":"#9D8C77"},{"code":"B-04","name":"ストーン","hex":"#8F877C"},{"code":"B-05","name":"トープ","hex":"#7B6F63"},{"code":"B-06","name":"クレイ","hex":"#A38C76"}],'ブラウン':[{"code":"BR-01","name":"ダークブラウン","hex":"#5D4636"},{"code":"BR-02","name":"ブラウン","hex":"#725747"},{"code":"BR-03","name":"ココア","hex":"#8A6A54"},{"code":"BR-04","name":"ウォルナット","hex":"#654E42"},{"code":"BR-05","name":"セピア","hex":"#5B4B3E"},{"code":"BR-06","name":"モカ","hex":"#7B5D4A"}],'アクセント':[{"code":"A-01","name":"ネイビー","hex":"#3F5168"},{"code":"A-02","name":"ブルーグレー","hex":"#6C7D8B"},{"code":"A-03","name":"グリーングレー","hex":"#7C8A7A"},{"code":"A-04","name":"オリーブ","hex":"#7C7660"},{"code":"A-05","name":"テラコッタ","hex":"#9A6C58"},{"code":"A-06","name":"ボルドーブラウン","hex":"#6B4B45"}]};
 const HANDLE_RADIUS=10;
-const state={baseImage:null,baseImageDataUrl:null,baseImageFileName:'',globalMaterial:null,selectedColor:null,paletteKey:Object.keys(PALETTES)[0],faces:[],selectedFaceId:null,activeFace:null,cutouts:[],activeCutout:null,creatingMode:null,dragMode:null,dragTarget:null,dragIndex:-1,dragStart:null,startPoints:null,editScale:1,compareCanvas:null,colorOpacity:54,materialOpacity:32,faceCounter:1};
+const state={baseImage:null,baseImageDataUrl:null,globalMaterial:null,selectedColor:null,paletteKey:Object.keys(PALETTES)[0],faces:[],selectedFaceId:null,activeFace:null,cutouts:[],activeCutout:null,creatingMode:null,dragMode:null,dragTarget:null,dragIndex:-1,dragStart:null,startPoints:null,editScale:1,compareCanvas:null,colorOpacity:54,materialOpacity:32,faceCounter:1};
 const $=(id)=>document.getElementById(id), editCanvas=$('editCanvas'), editCtx=editCanvas.getContext('2d'), compareCanvas=$('compareCanvas'), compareCtx=compareCanvas.getContext('2d');
-function setStatus(message,mode='normal'){const box=$('statusBox');box.textContent=message;box.className='status-box'+(mode==='ok'?' ok':mode==='warn'?' warn':'')}
+function setStatus(m,mode='normal'){const b=$('statusBox');b.textContent=m;b.className='status-box'+(mode==='ok'?' ok':mode==='warn'?' warn':'')}
 function fileToDataUrl(file){return new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(file)})}
 function loadImage(url){return new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=reject;img.crossOrigin='anonymous';img.src=url})}
-function fitRect(imgW,imgH,maxW,maxH){const scale=Math.min(maxW/imgW,maxH/imgH,1);return{width:Math.round(imgW*scale),height:Math.round(imgH*scale),scale}}
+function fitRect(w,h,maxW,maxH){const s=Math.min(maxW/w,maxH/h,1);return{width:Math.round(w*s),height:Math.round(h*s),scale:s}}
 function clampPoint(p){p.x=Math.max(0,Math.min(state.baseImage.width,p.x));p.y=Math.max(0,Math.min(state.baseImage.height,p.y));return p}
 function pointInPolygon(point, points){let inside=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const xi=points[i].x, yi=points[i].y, xj=points[j].x, yj=points[j].y;const intersect=((yi>point.y)!==(yj>point.y))&&(point.x<((xj-xi)*(point.y-yi))/(yj-yi+0.00001)+xi);if(intersect)inside=!inside}return inside}
 function canvasToImagePoint(evt){const rect=editCanvas.getBoundingClientRect();return{x:Math.max(0,Math.min(state.baseImage.width,((evt.clientX-rect.left)/rect.width)*state.baseImage.width)),y:Math.max(0,Math.min(state.baseImage.height,((evt.clientY-rect.top)/rect.height)*state.baseImage.height))}}
 function polygonReady(face){return face&&face.closed&&face.points.length>=3}
 function currentFace(){return state.faces.find(f=>f.id===state.selectedFaceId)||null}
-function createFaceConfig(){const n=state.faceCounter++; return{id:'face_'+n,name:'面'+n,points:[],closed:false,scale:100,rotate:0,perspX:35,perspY:0,shiftX:18,shiftY:0,material:null}}
-function polygonBounds(points){let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;points.forEach(p=>{minX=Math.min(minX,p.x);minY=Math.min(minY,p.y);maxX=Math.max(maxX,p.x);maxY=Math.max(maxY,p.y)});return{minX,minY,maxX,maxY,width:maxX-minX,height:maxY-minY}}
+function createRectQuadForFace(points){const xs=points.map(p=>p.x), ys=points.map(p=>p.y);const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);return[{x:minX,y:minY},{x:maxX,y:minY},{x:maxX,y:maxY},{x:minX,y:maxY}]}
+function createFaceConfig(){const n=state.faceCounter++;return{id:'face_'+n,name:'面'+n,points:[],closed:false,color:null,material:null,materialQuad:null}}
 function renderPaletteTabs(){const box=$('paletteTabs');box.innerHTML='';Object.keys(PALETTES).forEach(key=>{const btn=document.createElement('button');btn.className='tab'+(state.paletteKey===key?' active':'');btn.textContent=key;btn.onclick=()=>{state.paletteKey=key;renderPaletteTabs();renderSwatches()};box.appendChild(btn)})}
-function renderSwatches(){const box=$('swatches');box.innerHTML='';PALETTES[state.paletteKey].forEach(color=>{const item=document.createElement('button');item.className='swatch'+(state.selectedColor?.code===color.code?' active':'');item.innerHTML=`<div class="chip" style="background:${color.hex}"></div><div style="font-weight:700">${color.code}</div><div class="small">${color.name}</div>`;item.onclick=()=>{state.selectedColor=color;$('selectionPill').textContent=`選択色：${color.code} / ${color.name}`;renderSwatches();updateGenerateButton()};box.appendChild(item)})}
+function renderSwatches(){const box=$('swatches');box.innerHTML='';PALETTES[state.paletteKey].forEach(color=>{const f=currentFace();const active=((f&&f.color?.code===color.code)||(!f&&state.selectedColor?.code===color.code));const item=document.createElement('button');item.className='swatch'+(active?' active':'');item.innerHTML=`<div class="chip" style="background:${color.hex}"></div><div style="font-weight:700">${color.code}</div><div class="small">${color.name}</div>`;item.onclick=()=>{const face=currentFace();if(face){face.color=color}else{state.selectedColor=color}$('selectionPill').textContent=`選択色：${color.code} / ${color.name}`;renderSwatches();renderFaceList();renderEditPreview();updateGenerateButton()};box.appendChild(item)})}
 function renderGlobalMaterial(){const box=$('materialsGrid');box.innerHTML='';if(!state.globalMaterial){$('materialPill').textContent='全体素材：なし';return}const item=document.createElement('div');item.className='material';item.innerHTML=`<img src="${state.globalMaterial.previewUrl}" alt=""><div class="small" style="margin-top:6px">${state.globalMaterial.name}</div>`;box.appendChild(item);$('materialPill').textContent=`全体素材：${state.globalMaterial.name}`}
-function renderFaceMaterialBox(){const f=currentFace(); if(!f){$('faceMaterialBox').textContent='面が未選択です。'; return;} if(f.material){$('faceMaterialBox').innerHTML=`選択面素材：${f.material.name}`;} else {$('faceMaterialBox').textContent='選択面素材：未設定（全体素材を使用）';}}
-function renderFaceList(){const box=$('faceList');box.innerHTML='';if(state.faces.length===0){box.innerHTML='<div class="small">面がまだありません。</div>'; $('facePill').textContent='選択面：なし'; renderFaceMaterialBox(); return;} state.faces.forEach((face,idx)=>{const btn=document.createElement('button');btn.className='face-item'+(face.id===state.selectedFaceId?' active':'');btn.innerHTML=`<div style="font-weight:700">面 ${idx+1}</div><div class="small">点数：${face.points.length} / ${face.closed?'確定済み':'作成中'}</div><div class="small">個別素材：${face.material?face.material.name:'なし'}</div>`;btn.onclick=()=>{state.selectedFaceId=face.id;syncFaceControls();renderFaceList();renderEditPreview()};box.appendChild(btn)}); const f=currentFace(); $('facePill').textContent=f?`選択面：${state.faces.indexOf(f)+1}`:'選択面：なし'; renderFaceMaterialBox();}
-function syncFaceControls(){const f=currentFace(); if(!f) return; $('faceScale').value=f.scale; $('faceRotate').value=f.rotate; $('facePerspX').value=f.perspX; $('facePerspY').value=f.perspY; $('faceShiftX').value=f.shiftX; $('faceShiftY').value=f.shiftY; updateLabels()}
-function updateLabels(){const f=currentFace(); $('colorOpacityLabel').textContent=state.colorOpacity+'%'; $('materialOpacityLabel').textContent=state.materialOpacity+'%'; if(f){$('faceScaleLabel').textContent=f.scale+'%'; $('faceRotateLabel').textContent=f.rotate+'°'; $('facePerspXLabel').textContent=f.perspX+'%'; $('facePerspYLabel').textContent=f.perspY+'%'; $('faceShiftXLabel').textContent=f.shiftX+'%'; $('faceShiftYLabel').textContent=f.shiftY+'%';} else {['faceScaleLabel','faceRotateLabel','facePerspXLabel','facePerspYLabel','faceShiftXLabel','faceShiftYLabel'].forEach(id=>$(id).textContent='-');}}
-function updateGenerateButton(){const ready=state.baseImage&&state.selectedColor&&state.faces.some(f=>polygonReady(f)); $('generateBtn').disabled=!ready; $('resetBtn').disabled=!state.baseImage; $('downloadJpgBtn').disabled=!state.compareCanvas; $('downloadPdfBtn').disabled=!state.compareCanvas; renderFaceList(); updateLabels()}
-function drawPolygon(points,closed,stroke,fill,label){if(points.length===0)return;const s=state.editScale;editCtx.save();editCtx.beginPath();editCtx.moveTo(points[0].x*s,points[0].y*s);for(let i=1;i<points.length;i++)editCtx.lineTo(points[i].x*s,points[i].y*s);if(closed)editCtx.closePath();editCtx.fillStyle=fill;editCtx.strokeStyle=stroke;editCtx.lineWidth=2;editCtx.setLineDash([8,6]);if(closed)editCtx.fill();editCtx.stroke();editCtx.setLineDash([]);points.forEach((p,idx)=>{editCtx.fillStyle='#fff';editCtx.strokeStyle=stroke;editCtx.lineWidth=2;editCtx.beginPath();editCtx.arc(p.x*s,p.y*s,HANDLE_RADIUS,0,Math.PI*2);editCtx.fill();editCtx.stroke();editCtx.fillStyle=stroke;editCtx.font='12px sans-serif';editCtx.fillText(String(idx+1),p.x*s+12,p.y*s-12)}); if(label&&points[0]){editCtx.fillStyle=stroke;editCtx.font='bold 13px sans-serif';editCtx.fillText(label,points[0].x*s+10,points[0].y*s+18)} editCtx.restore()}
+function renderFaceMaterialBox(){const f=currentFace();if(!f){$('faceMaterialBox').textContent='面が未選択です。';$('faceColorBox').textContent='選択面色：未設定（全体色を使用）';return}if(f.material){$('faceMaterialBox').textContent=`選択面素材：${f.material.name}`}else{$('faceMaterialBox').textContent='選択面素材：未設定（全体素材を使用）'}if(f.color){$('faceColorBox').textContent=`選択面色：${f.color.code} / ${f.color.name}`}else{$('faceColorBox').textContent='選択面色：未設定（全体色を使用）'}}
+function renderFaceList(){const box=$('faceList');box.innerHTML='';if(state.faces.length===0){box.innerHTML='<div class="small">面がまだありません。</div>';$('facePill').textContent='選択面：なし';renderFaceMaterialBox();return}state.faces.forEach((face,idx)=>{const btn=document.createElement('button');btn.className='face-item'+(face.id===state.selectedFaceId?' active':'');btn.innerHTML=`<div style="font-weight:700">面 ${idx+1}</div><div class="small">点数：${face.points.length} / ${face.closed?'確定済み':'作成中'}</div><div class="small">個別素材：${face.material?face.material.name:'なし'}</div><div class="small">個別色：${face.color?face.color.code:'全体色'}</div>`;btn.onclick=()=>{state.selectedFaceId=face.id;syncFaceControls();renderFaceList();renderEditPreview()};box.appendChild(btn)});const f=currentFace();$('facePill').textContent=f?`選択面：${state.faces.indexOf(f)+1}`:'選択面：なし';renderFaceMaterialBox()}
+function syncFaceControls(){const f=currentFace();if(!f)return;if(f.color){$('selectionPill').textContent=`選択色：${f.color.code} / ${f.color.name}`}else if(state.selectedColor){$('selectionPill').textContent=`選択色：${state.selectedColor.code} / ${state.selectedColor.name}`}renderFaceMaterialBox();updateLabels()}
+function updateLabels(){$('colorOpacityLabel').textContent=state.colorOpacity+'%';$('materialOpacityLabel').textContent=state.materialOpacity+'%'}
+function updateGenerateButton(){const ready=state.baseImage&&state.selectedColor&&state.faces.some(f=>polygonReady(f));$('generateBtn').disabled=!ready;$('resetBtn').disabled=!state.baseImage;$('downloadJpgBtn').disabled=!state.compareCanvas;$('downloadPdfBtn').disabled=!state.compareCanvas;renderFaceList();updateLabels()}
+function drawPolygon(points,closed,stroke,fill,label){if(points.length===0)return;const s=state.editScale;editCtx.save();editCtx.beginPath();editCtx.moveTo(points[0].x*s,points[0].y*s);for(let i=1;i<points.length;i++)editCtx.lineTo(points[i].x*s,points[i].y*s);if(closed)editCtx.closePath();editCtx.fillStyle=fill;editCtx.strokeStyle=stroke;editCtx.lineWidth=2;editCtx.setLineDash([8,6]);if(closed)editCtx.fill();editCtx.stroke();editCtx.setLineDash([]);points.forEach((p,idx)=>{editCtx.fillStyle='#fff';editCtx.strokeStyle=stroke;editCtx.lineWidth=2;editCtx.beginPath();editCtx.arc(p.x*s,p.y*s,HANDLE_RADIUS,0,Math.PI*2);editCtx.fill();editCtx.stroke();editCtx.fillStyle=stroke;editCtx.font='12px sans-serif';editCtx.fillText(String(idx+1),p.x*s+12,p.y*s-12)});if(label&&points[0]){editCtx.fillStyle=stroke;editCtx.font='bold 13px sans-serif';editCtx.fillText(label,points[0].x*s+10,points[0].y*s+18)}editCtx.restore()}
+function drawQuad(quad,label){if(!quad||quad.length!==4)return;const s=state.editScale;editCtx.save();editCtx.beginPath();editCtx.moveTo(quad[0].x*s,quad[0].y*s);quad.slice(1).forEach(p=>editCtx.lineTo(p.x*s,p.y*s));editCtx.closePath();editCtx.strokeStyle='rgba(22,163,74,1)';editCtx.fillStyle='rgba(22,163,74,0.06)';editCtx.lineWidth=2;editCtx.setLineDash([6,6]);editCtx.fill();editCtx.stroke();editCtx.setLineDash([]);quad.forEach(p=>{editCtx.fillStyle='#fff';editCtx.strokeStyle='rgba(22,163,74,1)';editCtx.beginPath();editCtx.rect(p.x*s-8,p.y*s-8,16,16);editCtx.fill();editCtx.stroke()});if(label){editCtx.fillStyle='rgba(22,163,74,1)';editCtx.font='bold 13px sans-serif';editCtx.fillText(label,quad[0].x*s+8,quad[0].y*s-8)}editCtx.restore()}
 function createFaceMask(face,image){const c=document.createElement('canvas');c.width=image.width;c.height=image.height;const ctx=c.getContext('2d');if(!polygonReady(face))return c;ctx.fillStyle='#fff';ctx.beginPath();ctx.moveTo(face.points[0].x,face.points[0].y);for(let i=1;i<face.points.length;i++)ctx.lineTo(face.points[i].x,face.points[i].y);ctx.closePath();ctx.fill();state.cutouts.forEach(poly=>{if(poly.points.length<3||!poly.closed)return;ctx.save();ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.moveTo(poly.points[0].x,poly.points[0].y);for(let i=1;i<poly.points.length;i++)ctx.lineTo(poly.points[i].x,poly.points[i].y);ctx.closePath();ctx.fill();ctx.restore()});return c}
-function rotateCanvas(img, angleDeg){const rad=angleDeg*Math.PI/180; const sin=Math.abs(Math.sin(rad)), cos=Math.abs(Math.cos(rad)); const w=img.width, h=img.height; const cw=Math.ceil(w*cos+h*sin), ch=Math.ceil(h*cos+w*sin); const c=document.createElement('canvas'); c.width=cw; c.height=ch; const ctx=c.getContext('2d'); ctx.translate(cw/2,ch/2); ctx.rotate(rad); ctx.drawImage(img,-w/2,-h/2); return c}
-function renderFaceTexture(face, textureImg, maskCanvas){const out=document.createElement('canvas'); out.width=maskCanvas.width; out.height=maskCanvas.height; const octx=out.getContext('2d'); const bounds=polygonBounds(face.points); const rotated=rotateCanvas(textureImg, face.rotate); const tileW=Math.max(24,Math.round(rotated.width*(face.scale/100))); const tileH=Math.max(24,Math.round(rotated.height*(face.scale/100))); const patternCanvas=document.createElement('canvas'); patternCanvas.width=tileW; patternCanvas.height=tileH; patternCanvas.getContext('2d').drawImage(rotated,0,0,tileW,tileH); const slices=Math.max(120,Math.round(Math.max(bounds.width,bounds.height)/3)); for(let i=0;i<slices;i++){ const t=slices<=1?0:i/(slices-1); const x=bounds.minX+t*bounds.width; const nextX=bounds.minX+((i+1)/slices)*bounds.width; const drawW=Math.max(1,nextX-x); const xFactor=1-(face.perspX/100)*t; const yFactor=1-(face.perspY/100)*t; const stripH=Math.max(4,bounds.height*yFactor); const yTop=bounds.minY+(face.shiftY/100)*bounds.height*t; const yBottom=yTop+stripH; const xOffset=(face.shiftX/100)*bounds.width*t; const drawX=x+xOffset; const srcX=Math.floor((t*tileW*8)%tileW); const temp=document.createElement('canvas'); temp.width=Math.max(1,Math.ceil(drawW*Math.abs(xFactor||1))); temp.height=Math.max(1,Math.ceil(yBottom-yTop)); const tctx=temp.getContext('2d'); let yy=0; while(yy<temp.height){ tctx.drawImage(patternCanvas,srcX,0,Math.max(1,temp.width),patternCanvas.height,0,yy,Math.max(1,temp.width),patternCanvas.height); yy+=patternCanvas.height; } octx.drawImage(temp,drawX,yTop,temp.width,temp.height);} octx.globalCompositeOperation='destination-in'; octx.drawImage(maskCanvas,0,0); return out}
-function renderFinalComposite(){const image=state.baseImage; const result=document.createElement('canvas'); result.width=image.width; result.height=image.height; const ctx=result.getContext('2d'); ctx.drawImage(image,0,0); state.faces.filter(f=>polygonReady(f)).forEach(face=>{ const maskCanvas=createFaceMask(face,image); const colorLayer=document.createElement('canvas'); colorLayer.width=image.width; colorLayer.height=image.height; const cctx=colorLayer.getContext('2d'); cctx.fillStyle=state.selectedColor.hex; cctx.globalAlpha=state.colorOpacity/100; cctx.fillRect(0,0,colorLayer.width,colorLayer.height); cctx.globalAlpha=1; cctx.globalCompositeOperation='destination-in'; cctx.drawImage(maskCanvas,0,0); ctx.drawImage(colorLayer,0,0); const materialObj = face.material || state.globalMaterial; if(materialObj?.image){ const textureLayer=renderFaceTexture(face,materialObj.image,maskCanvas); ctx.save(); ctx.globalAlpha=state.materialOpacity/100; ctx.drawImage(textureLayer,0,0); ctx.restore(); }}); return result}
-function renderEditPreview(){if(!state.baseImage){$('editCanvas').style.display='none';return;} const fitted=fitRect(state.baseImage.width,state.baseImage.height,1100,620); editCanvas.width=fitted.width; editCanvas.height=fitted.height; state.editScale=fitted.width/state.baseImage.width; editCtx.clearRect(0,0,editCanvas.width,editCanvas.height); editCtx.drawImage(state.baseImage,0,0,editCanvas.width,editCanvas.height); state.faces.forEach((face,idx)=>{ const mask=createFaceMask(face,state.baseImage); const overlay=document.createElement('canvas'); overlay.width=state.baseImage.width; overlay.height=state.baseImage.height; const octx=overlay.getContext('2d'); octx.drawImage(mask,0,0); octx.globalCompositeOperation='source-in'; octx.fillStyle=face.id===state.selectedFaceId?'rgba(37,99,235,0.22)':'rgba(37,99,235,0.10)'; octx.fillRect(0,0,overlay.width,overlay.height); editCtx.drawImage(overlay,0,0,editCanvas.width,editCanvas.height); drawPolygon(face.points,face.closed,'rgba(37,99,235,1)',face.id===state.selectedFaceId?'rgba(37,99,235,0.08)':'rgba(37,99,235,0.03)','面'+(idx+1)); }); state.cutouts.forEach((poly,idx)=>drawPolygon(poly.points,poly.closed,'rgba(239,68,68,1)','rgba(239,68,68,0.08)','切り抜き'+(idx+1))); if(state.activeCutout&&state.activeCutout.points.length) drawPolygon(state.activeCutout.points,state.activeCutout.closed,'rgba(249,115,22,1)','rgba(249,115,22,0.08)','作成中'); if(state.activeFace&&state.activeFace.points.length) drawPolygon(state.activeFace.points,state.activeFace.closed,'rgba(22,163,74,1)','rgba(22,163,74,0.08)','作成中'); $('editCanvas').style.display='block'}
-function hitTestVertices(point,points){const r=HANDLE_RADIUS/state.editScale; for(let i=0;i<points.length;i++){if(Math.hypot(point.x-points[i].x,point.y-points[i].y)<=r)return i} return -1}
-function hitTestAll(point){const selected=currentFace(); if(selected){ const v=hitTestVertices(point,selected.points); if(v>=0) return {type:'face-vertex', faceId:selected.id, index:v}; if(selected.closed&&pointInPolygon(point,selected.points)) return {type:'face-move', faceId:selected.id}; } for(let i=0;i<state.cutouts.length;i++){ const v=hitTestVertices(point,state.cutouts[i].points); if(v>=0) return {type:'cutout-vertex', polyIndex:i, index:v}; if(state.cutouts[i].closed&&pointInPolygon(point,state.cutouts[i].points)) return {type:'cutout-move', polyIndex:i}; } for(let i=0;i<state.faces.length;i++){ const face=state.faces[i]; if(face.id===state.selectedFaceId) continue; const v=hitTestVertices(point,face.points); if(v>=0) return {type:'face-vertex', faceId:face.id, index:v}; if(face.closed&&pointInPolygon(point,face.points)) return {type:'face-select', faceId:face.id}; } return {type:'none'} }
-function startFace(){state.activeFace=createFaceConfig(); state.creatingMode='face'; state.selectedFaceId=state.activeFace.id; renderEditPreview(); updateGenerateButton(); setStatus('新しい面を作成中です。クリックで頂点追加、ダブルクリックで確定。','warn')}
-function closeFace(){ if(!state.activeFace || state.activeFace.points.length<3){ setStatus('面は3点以上必要です。','warn'); return; } state.activeFace.closed=true; state.faces.push(state.activeFace); state.selectedFaceId=state.activeFace.id; state.activeFace=null; state.creatingMode=null; renderFaceList(); syncFaceControls(); renderEditPreview(); updateGenerateButton(); setStatus('面を確定しました。','ok') }
-function deleteFace(){ const f=currentFace(); if(!f){ setStatus('削除する面を選んでください。','warn'); return;} state.faces=state.faces.filter(x=>x.id!==f.id); state.selectedFaceId=state.faces[0]?.id||null; renderFaceList(); syncFaceControls(); renderEditPreview(); updateGenerateButton(); setStatus('選択面を削除しました。','ok') }
-function startCutout(){ if(state.faces.length===0 && !polygonReady(state.activeFace)){ setStatus('先に少なくとも1つ面を作成してください。','warn'); return;} state.creatingMode='cutout'; state.activeCutout={points:[],closed:false}; renderEditPreview(); setStatus('切り抜きポリゴンを作成中です。クリックで頂点追加、ダブルクリックで確定。','warn') }
-function closeCutout(){ if(!state.activeCutout || state.activeCutout.points.length<3){ setStatus('切り抜きは3点以上必要です。','warn'); return;} state.activeCutout.closed=true; state.cutouts.push(state.activeCutout); state.activeCutout=null; state.creatingMode=null; renderEditPreview(); setStatus('切り抜きを追加しました。','ok') }
-function clearCutouts(){ state.cutouts=[]; state.activeCutout=null; state.creatingMode=null; renderEditPreview(); setStatus('切り抜きを全削除しました。','ok') }
-function applyFaceControlChange(){const f=currentFace(); if(!f) return; f.scale=Number($('faceScale').value); f.rotate=Number($('faceRotate').value); f.perspX=Number($('facePerspX').value); f.perspY=Number($('facePerspY').value); f.shiftX=Number($('faceShiftX').value); f.shiftY=Number($('faceShiftY').value); updateLabels(); renderFaceList(); renderEditPreview()}
+function quadWidth(quad){return Math.hypot(quad[1].x-quad[0].x,quad[1].y-quad[0].y)}
+function createPatternCanvas(img){const c=document.createElement('canvas');c.width=img.width;c.height=img.height;c.getContext('2d').drawImage(img,0,0);return c}
+function renderTextureByQuad(textureImg, quad, maskCanvas){const out=document.createElement('canvas');out.width=maskCanvas.width;out.height=maskCanvas.height;const octx=out.getContext('2d');const patternCanvas=createPatternCanvas(textureImg);const lt=quad[0],rt=quad[1],rb=quad[2],lb=quad[3];const slices=Math.max(120,Math.round(quadWidth(quad)/2));for(let i=0;i<slices;i++){const t0=i/slices,t1=(i+1)/slices;const pTop0={x:lt.x+(rt.x-lt.x)*t0,y:lt.y+(rt.y-lt.y)*t0};const pTop1={x:lt.x+(rt.x-lt.x)*t1,y:lt.y+(rt.y-lt.y)*t1};const pBot0={x:lb.x+(rb.x-lb.x)*t0,y:lb.y+(rb.y-lb.y)*t0};const pBot1={x:lb.x+(rb.x-lb.x)*t1,y:lb.y+(rb.y-lb.y)*t1};const temp=document.createElement('canvas');const stripW=Math.max(1,Math.ceil(Math.hypot(pTop1.x-pTop0.x,pTop1.y-pTop0.y)));const avgH=Math.max(1,Math.ceil((Math.hypot(pBot0.x-pTop0.x,pBot0.y-pTop0.y)+Math.hypot(pBot1.x-pTop1.x,pBot1.y-pTop1.y))/2));temp.width=stripW;temp.height=avgH;const tctx=temp.getContext('2d');const srcX=(t0*quadWidth(quad))%patternCanvas.width;let yy=0;while(yy<temp.height){tctx.drawImage(patternCanvas,srcX,0,Math.max(1,temp.width),patternCanvas.height,0,yy,Math.max(1,temp.width),patternCanvas.height);yy+=patternCanvas.height}const minX=Math.min(pTop0.x,pTop1.x,pBot0.x,pBot1.x),minY=Math.min(pTop0.y,pTop1.y,pBot0.y,pBot1.y),maxX=Math.max(pTop0.x,pTop1.x,pBot0.x,pBot1.x),maxY=Math.max(pTop0.y,pTop1.y,pBot0.y,pBot1.y);octx.save();octx.beginPath();octx.moveTo(pTop0.x,pTop0.y);octx.lineTo(pTop1.x,pTop1.y);octx.lineTo(pBot1.x,pBot1.y);octx.lineTo(pBot0.x,pBot0.y);octx.closePath();octx.clip();octx.drawImage(temp,minX,minY,maxX-minX,maxY-minY);octx.restore()}octx.globalCompositeOperation='destination-in';octx.drawImage(maskCanvas,0,0);return out}
+function renderFinalComposite(){const image=state.baseImage;const result=document.createElement('canvas');result.width=image.width;result.height=image.height;const ctx=result.getContext('2d');ctx.drawImage(image,0,0);state.faces.filter(f=>polygonReady(f)).forEach(face=>{const maskCanvas=createFaceMask(face,image);const faceColor=face.color||state.selectedColor;const colorLayer=document.createElement('canvas');colorLayer.width=image.width;colorLayer.height=image.height;const cctx=colorLayer.getContext('2d');cctx.fillStyle=faceColor.hex;cctx.globalAlpha=state.colorOpacity/100;cctx.fillRect(0,0,colorLayer.width,colorLayer.height);cctx.globalAlpha=1;cctx.globalCompositeOperation='destination-in';cctx.drawImage(maskCanvas,0,0);ctx.drawImage(colorLayer,0,0);const materialObj=face.material||state.globalMaterial;const quad=face.materialQuad||createRectQuadForFace(face.points);if(materialObj?.image&&quad){const textureLayer=renderTextureByQuad(materialObj.image,quad,maskCanvas);ctx.save();ctx.globalAlpha=state.materialOpacity/100;ctx.drawImage(textureLayer,0,0);ctx.restore()}});return result}
+function renderEditPreview(){if(!state.baseImage){$('editCanvas').style.display='none';return}const fitted=fitRect(state.baseImage.width,state.baseImage.height,1100,620);editCanvas.width=fitted.width;editCanvas.height=fitted.height;state.editScale=fitted.width/state.baseImage.width;editCtx.clearRect(0,0,editCanvas.width,editCanvas.height);const previewComposite=renderFinalComposite();editCtx.drawImage(previewComposite,0,0,editCanvas.width,editCanvas.height);state.faces.forEach((face,idx)=>drawPolygon(face.points,face.closed,'rgba(37,99,235,1)',face.id===state.selectedFaceId?'rgba(37,99,235,0.04)':'rgba(37,99,235,0.02)','面'+(idx+1)));state.cutouts.forEach((poly,idx)=>drawPolygon(poly.points,poly.closed,'rgba(239,68,68,1)','rgba(239,68,68,0.08)','切り抜き'+(idx+1)));const f=currentFace();if(f&&(f.material||state.globalMaterial)){if(!f.materialQuad)f.materialQuad=createRectQuadForFace(f.points);drawQuad(f.materialQuad,'素材枠')}if(state.activeCutout&&state.activeCutout.points.length)drawPolygon(state.activeCutout.points,state.activeCutout.closed,'rgba(249,115,22,1)','rgba(249,115,22,0.08)','作成中');if(state.activeFace&&state.activeFace.points.length)drawPolygon(state.activeFace.points,state.activeFace.closed,'rgba(22,163,74,1)','rgba(22,163,74,0.08)','作成中');$('editCanvas').style.display='block'}
+function hitTestVertices(point,points,size=HANDLE_RADIUS){const r=size/state.editScale;for(let i=0;i<points.length;i++){if(Math.hypot(point.x-points[i].x,point.y-points[i].y)<=r)return i}return-1}
+function hitTestQuad(point,quad){if(!quad)return{type:'none'};const v=hitTestVertices(point,quad,12);if(v>=0)return{type:'quad-vertex',index:v};if(pointInPolygon(point,quad))return{type:'quad-move'};return{type:'none'}}
+function hitTestAll(point){const f=currentFace();if(f&&(f.material||state.globalMaterial)&&f.materialQuad){const q=hitTestQuad(point,f.materialQuad);if(q.type!=='none')return q}if(f){const v=hitTestVertices(point,f.points);if(v>=0)return{type:'face-vertex',faceId:f.id,index:v};if(f.closed&&pointInPolygon(point,f.points))return{type:'face-move',faceId:f.id}}for(let i=0;i<state.cutouts.length;i++){const v=hitTestVertices(point,state.cutouts[i].points);if(v>=0)return{type:'cutout-vertex',polyIndex:i,index:v};if(state.cutouts[i].closed&&pointInPolygon(point,state.cutouts[i].points))return{type:'cutout-move',polyIndex:i}}for(let i=0;i<state.faces.length;i++){const face=state.faces[i];if(face.id===state.selectedFaceId)continue;const v=hitTestVertices(point,face.points);if(v>=0)return{type:'face-vertex',faceId:face.id,index:v};if(face.closed&&pointInPolygon(point,face.points))return{type:'face-select',faceId:face.id}}return{type:'none'}}
+function startFace(){state.activeFace=createFaceConfig();state.creatingMode='face';state.selectedFaceId=state.activeFace.id;renderEditPreview();updateGenerateButton();setStatus('新しい面を作成中です。クリックで頂点追加、ダブルクリックで確定。','warn')}
+function closeFace(){if(!state.activeFace||state.activeFace.points.length<3){setStatus('面は3点以上必要です。','warn');return}state.activeFace.closed=true;state.activeFace.materialQuad=createRectQuadForFace(state.activeFace.points);state.faces.push(state.activeFace);state.selectedFaceId=state.activeFace.id;state.activeFace=null;state.creatingMode=null;renderFaceList();syncFaceControls();renderEditPreview();updateGenerateButton();setStatus('面を確定しました。','ok')}
+function deleteFace(){const f=currentFace();if(!f){setStatus('削除する面を選んでください。','warn');return}state.faces=state.faces.filter(x=>x.id!==f.id);state.selectedFaceId=state.faces[0]?.id||null;renderFaceList();syncFaceControls();renderEditPreview();updateGenerateButton();setStatus('選択面を削除しました。','ok')}
+function startCutout(){if(state.faces.length===0&&!polygonReady(state.activeFace)){setStatus('先に少なくとも1つ面を作成してください。','warn');return}state.creatingMode='cutout';state.activeCutout={points:[],closed:false};renderEditPreview();setStatus('切り抜きポリゴンを作成中です。クリックで頂点追加、ダブルクリックで確定。','warn')}
+function closeCutout(){if(!state.activeCutout||state.activeCutout.points.length<3){setStatus('切り抜きは3点以上必要です。','warn');return}state.activeCutout.closed=true;state.cutouts.push(state.activeCutout);state.activeCutout=null;state.creatingMode=null;renderEditPreview();setStatus('切り抜きを追加しました。','ok')}
+function clearCutouts(){state.cutouts=[];state.activeCutout=null;state.creatingMode=null;renderEditPreview();setStatus('切り抜きを全削除しました。','ok')}
+function buildCompare(beforeImage,afterCanvas){const fitted=fitRect(beforeImage.width,beforeImage.height,620,680),margin=40,titleH=140,labelH=40;compareCanvas.width=fitted.width*2+margin*3;compareCanvas.height=fitted.height+titleH+labelH+margin*2;compareCtx.fillStyle='#fff';compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height);compareCtx.fillStyle='#0f172a';compareCtx.font='bold 28px sans-serif';compareCtx.fillText($('projectName').value||'外装塗装提案',margin,42);compareCtx.font='14px sans-serif';compareCtx.fillStyle='#475569';compareCtx.fillText(`顧客名：${$('customerName').value||'-'}`,margin,70);compareCtx.fillText(`担当者：${$('ownerName').value||'-'}`,margin,92);compareCtx.fillText(`提案日：${$('proposalDate').value||'-'}`,margin,114);const sub=`選択色：${state.selectedColor.code} ${state.selectedColor.name} / 面数：${state.faces.length} / 切り抜き数：${state.cutouts.length}`;compareCtx.fillText(sub,margin+420,70);const y=titleH+margin,x1=margin,x2=margin*2+fitted.width;compareCtx.strokeStyle='#e2e8f0';compareCtx.lineWidth=1;compareCtx.strokeRect(x1,y,fitted.width,fitted.height);compareCtx.strokeRect(x2,y,fitted.width,fitted.height);compareCtx.drawImage(beforeImage,x1,y,fitted.width,fitted.height);compareCtx.drawImage(afterCanvas,x2,y,fitted.width,fitted.height);compareCtx.fillStyle='#0f172a';compareCtx.font='bold 18px sans-serif';compareCtx.fillText('Before',x1,y+fitted.height+28);compareCtx.fillText('After',x2,y+fitted.height+28);state.compareCanvas=compareCanvas}
 function calculateMaskRatio(canvas){const data=canvas.getContext('2d').getImageData(0,0,canvas.width,canvas.height).data;let on=0,total=canvas.width*canvas.height;for(let i=0;i<total;i++){if(data[i*4+3]>0)on++}return((on/total)*100).toFixed(1)}
-function buildCompare(beforeImage, afterCanvas){ const fitted=fitRect(beforeImage.width,beforeImage.height,620,680), margin=40, titleH=140, labelH=40; compareCanvas.width=fitted.width*2+margin*3; compareCanvas.height=fitted.height+titleH+labelH+margin*2; compareCtx.fillStyle='#fff'; compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height); compareCtx.fillStyle='#0f172a'; compareCtx.font='bold 28px sans-serif'; compareCtx.fillText($('projectName').value||'外装塗装提案',margin,42); compareCtx.font='14px sans-serif'; compareCtx.fillStyle='#475569'; compareCtx.fillText(`顧客名：${$('customerName').value||'-'}`,margin,70); compareCtx.fillText(`担当者：${$('ownerName').value||'-'}`,margin,92); compareCtx.fillText(`提案日：${$('proposalDate').value||'-'}`,margin,114); const sub=`選択色：${state.selectedColor.code} ${state.selectedColor.name} / 面数：${state.faces.length} / 切り抜き数：${state.cutouts.length}`; compareCtx.fillText(sub,margin+420,70); const y=titleH+margin,x1=margin,x2=margin*2+fitted.width; compareCtx.strokeStyle='#e2e8f0'; compareCtx.lineWidth=1; compareCtx.strokeRect(x1,y,fitted.width,fitted.height); compareCtx.strokeRect(x2,y,fitted.width,fitted.height); compareCtx.drawImage(beforeImage,x1,y,fitted.width,fitted.height); compareCtx.drawImage(afterCanvas,x2,y,fitted.width,fitted.height); compareCtx.fillStyle='#0f172a'; compareCtx.font='bold 18px sans-serif'; compareCtx.fillText('Before',x1,y+fitted.height+28); compareCtx.fillText('After',x2,y+fitted.height+28); state.compareCanvas=compareCanvas }
-async function generateProposal(){ if(!state.baseImage || !state.selectedColor || state.faces.filter(f=>polygonReady(f)).length===0) return; try{ const result=renderFinalComposite(); buildCompare(state.baseImage,result); $('placeholder').style.display='none'; $('compareCanvas').style.display='block'; const unionMask=document.createElement('canvas'); unionMask.width=state.baseImage.width; unionMask.height=state.baseImage.height; const uctx=unionMask.getContext('2d'); state.faces.filter(f=>polygonReady(f)).forEach(f=>uctx.drawImage(createFaceMask(f,state.baseImage),0,0)); $('resultSummary').style.display='block'; $('resultSummary').innerHTML=`<div><strong>生成完了</strong></div><div>面数：${state.faces.length}</div><div>切り抜き数：${state.cutouts.length}</div><div>色透過度：${state.colorOpacity}% / 素材透過度：${state.materialOpacity}%</div><div>推定加工面積：画像全体の ${calculateMaskRatio(unionMask)}%</div>`; setStatus('提案画像を生成しました。PDFは画像化して出力するため文字化けしません。','ok'); updateGenerateButton(); }catch(e){ console.error(e); setStatus('生成に失敗しました。','warn'); } }
-function resetAll(){ state.baseImage=null; state.baseImageDataUrl=null; state.baseImageFileName=''; state.globalMaterial=null; state.selectedColor=null; state.faces=[]; state.selectedFaceId=null; state.activeFace=null; state.cutouts=[]; state.activeCutout=null; state.creatingMode=null; state.compareCanvas=null; state.faceCounter=1; $('baseInfo').textContent=''; $('materialsGrid').innerHTML=''; $('resultSummary').style.display='none'; $('placeholder').style.display='block'; $('editCanvas').style.display='none'; $('compareCanvas').style.display='none'; $('selectionPill').textContent='選択色：未選択'; $('materialPill').textContent='全体素材：なし'; $('facePill').textContent='選択面：なし'; renderGlobalMaterial(); renderSwatches(); renderFaceList(); updateGenerateButton(); setStatus('待機中です。') }
-function downloadJpg(){ if(!state.compareCanvas)return; state.compareCanvas.toBlob(blob=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='proposal.jpg'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); },'image/jpeg',0.95) }
-function downloadPdf(){ if(!state.compareCanvas)return; const { jsPDF } = window.jspdf; const pdf=new jsPDF({orientation:'landscape',unit:'pt',format:'a4'}), w=pdf.internal.pageSize.getWidth(), h=pdf.internal.pageSize.getHeight(); pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.95), 'JPEG', 18, 18, w-36, h-36); pdf.save('proposal.pdf') }
-async function handleBaseImage(file){ state.baseImageDataUrl=await fileToDataUrl(file); state.baseImage=await loadImage(state.baseImageDataUrl); state.baseImageFileName=file.name; state.faces=[]; state.selectedFaceId=null; state.activeFace=null; state.cutouts=[]; state.activeCutout=null; state.creatingMode=null; state.compareCanvas=null; state.faceCounter=1; $('baseInfo').textContent=`${file.name} / ${state.baseImage.width} × ${state.baseImage.height}`; renderEditPreview(); updateGenerateButton(); setStatus('写真を読み込みました。面を作成してください。','ok') }
-async function handleGlobalMaterial(file){ const previewUrl=await fileToDataUrl(file); state.globalMaterial={name:file.name, previewUrl, image:await loadImage(previewUrl)}; renderGlobalMaterial(); setStatus('全体素材を読み込みました。','ok') }
-async function handleFaceMaterial(file){ const f=currentFace(); if(!f){ setStatus('先に面を選択してください。','warn'); return; } const previewUrl=await fileToDataUrl(file); f.material={name:file.name, previewUrl, image:await loadImage(previewUrl)}; renderFaceList(); renderEditPreview(); setStatus('選択面の個別素材を設定しました。','ok') }
-
-renderPaletteTabs(); renderSwatches(); renderGlobalMaterial(); renderFaceList(); updateLabels(); updateGenerateButton(); setStatus('待機中です。');
-const today = new Date().toISOString().slice(0,10); $('proposalDate').value = today;
-
-$('baseImageInput').addEventListener('change', async e=>{const file=e.target.files[0]; if(file) await handleBaseImage(file);});
-$('materialInput').addEventListener('change', async e=>{const file=e.target.files[0]; if(file) await handleGlobalMaterial(file);});
-$('faceMaterialInput').addEventListener('change', async e=>{const file=e.target.files[0]; if(file) await handleFaceMaterial(file);});
-$('clearFaceMaterialBtn').onclick=()=>{ const f=currentFace(); if(!f){ setStatus('先に面を選択してください。','warn'); return; } f.material=null; renderFaceList(); renderEditPreview(); setStatus('選択面素材を解除しました。','ok'); };
-
-$('colorOpacity').addEventListener('input', e=>{state.colorOpacity=Number(e.target.value); updateLabels();});
-$('materialOpacity').addEventListener('input', e=>{state.materialOpacity=Number(e.target.value); updateLabels();});
-['faceScale','faceRotate','facePerspX','facePerspY','faceShiftX','faceShiftY'].forEach(id=>$(id).addEventListener('input', applyFaceControlChange));
-
-$('startFaceBtn').onclick=startFace; $('closeFaceBtn').onclick=closeFace; $('deleteFaceBtn').onclick=deleteFace;
-$('startCutoutBtn').onclick=startCutout; $('closeCutoutBtn').onclick=closeCutout; $('clearCutoutsBtn').onclick=clearCutouts;
-$('generateBtn').onclick=generateProposal; $('resetBtn').onclick=resetAll; $('downloadJpgBtn').onclick=downloadJpg; $('downloadPdfBtn').onclick=downloadPdf;
-
-editCanvas.addEventListener('click', e=>{
-  if(!state.baseImage || !state.creatingMode) return;
-  if(state.dragMode) return;
-  const p=clampPoint(canvasToImagePoint(e));
-  if(state.creatingMode==='face' && state.activeFace){ state.activeFace.points.push(p); renderEditPreview(); }
-  else if(state.creatingMode==='cutout' && state.activeCutout){ state.activeCutout.points.push(p); renderEditPreview(); }
-});
-editCanvas.addEventListener('dblclick', e=>{
-  if(!state.baseImage) return;
-  const p=canvasToImagePoint(e), hit=hitTestAll(p);
-  if(hit.type==='face-vertex'){ const f=state.faces.find(x=>x.id===hit.faceId); if(f && f.points.length>3){ f.points.splice(hit.index,1); renderEditPreview(); setStatus('面の頂点を削除しました。','ok'); } return; }
-  if(hit.type==='cutout-vertex'){ if(state.cutouts[hit.polyIndex].points.length>3){ state.cutouts[hit.polyIndex].points.splice(hit.index,1); renderEditPreview(); setStatus('切り抜きの頂点を削除しました。','ok'); } return; }
-  if(state.creatingMode==='face') closeFace();
-  else if(state.creatingMode==='cutout') closeCutout();
-});
-editCanvas.addEventListener('pointerdown', e=>{
-  if(!state.baseImage || state.creatingMode) return;
-  const p=canvasToImagePoint(e), hit=hitTestAll(p);
-  if(hit.type==='face-select'){ state.selectedFaceId=hit.faceId; syncFaceControls(); renderFaceList(); renderEditPreview(); setStatus('面を選択しました。','ok'); return; }
-  if(hit.type==='face-vertex'){ state.selectedFaceId=hit.faceId; syncFaceControls(); state.dragMode='face-vertex'; state.dragTarget=hit.faceId; state.dragIndex=hit.index; setStatus('面の頂点を調整中です。'); }
-  else if(hit.type==='face-move'){ state.selectedFaceId=hit.faceId; syncFaceControls(); state.dragMode='face-move'; state.dragTarget=hit.faceId; state.dragStart=p; state.startPoints=currentFace().points.map(pt=>({x:pt.x,y:pt.y})); setStatus('面全体を移動中です。'); }
-  else if(hit.type==='cutout-vertex'){ state.dragMode='cutout-vertex'; state.dragTarget=hit.polyIndex; state.dragIndex=hit.index; setStatus('切り抜きの頂点を調整中です。'); }
-  else if(hit.type==='cutout-move'){ state.dragMode='cutout-move'; state.dragTarget=hit.polyIndex; state.dragStart=p; state.startPoints=state.cutouts[hit.polyIndex].points.map(pt=>({x:pt.x,y:pt.y})); setStatus('切り抜き全体を移動中です。'); }
-});
-editCanvas.addEventListener('pointermove', e=>{
-  if(!state.dragMode) return;
-  const p=clampPoint(canvasToImagePoint(e));
-  if(state.dragMode==='face-vertex'){ const f=state.faces.find(x=>x.id===state.dragTarget); if(f) f.points[state.dragIndex]=p; }
-  else if(state.dragMode==='cutout-vertex'){ state.cutouts[state.dragTarget].points[state.dragIndex]=p; }
-  else if(state.dragMode==='face-move'){ const f=state.faces.find(x=>x.id===state.dragTarget); if(f){ const dx=p.x-state.dragStart.x, dy=p.y-state.dragStart.y; f.points=state.startPoints.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy})); } }
-  else if(state.dragMode==='cutout-move'){ const dx=p.x-state.dragStart.x, dy=p.y-state.dragStart.y; state.cutouts[state.dragTarget].points=state.startPoints.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy})); }
-  renderEditPreview();
-});
-const finishDrag=()=>{ if(!state.dragMode) return; state.dragMode=null; state.dragTarget=null; state.dragIndex=-1; state.dragStart=null; state.startPoints=null; setStatus('ポリゴンを調整しました。','ok'); };
-editCanvas.addEventListener('pointerup', finishDrag);
-editCanvas.addEventListener('pointerleave', finishDrag);
+async function generateProposal(){if(!state.baseImage||!state.selectedColor||state.faces.filter(f=>polygonReady(f)).length===0)return;try{const result=renderFinalComposite();buildCompare(state.baseImage,result);$('placeholder').style.display='none';$('compareCanvas').style.display='block';const unionMask=document.createElement('canvas');unionMask.width=state.baseImage.width;unionMask.height=state.baseImage.height;const uctx=unionMask.getContext('2d');state.faces.filter(f=>polygonReady(f)).forEach(f=>uctx.drawImage(createFaceMask(f,state.baseImage),0,0));$('resultSummary').style.display='block';$('resultSummary').innerHTML=`<div><strong>生成完了</strong></div><div>面数：${state.faces.length}</div><div>切り抜き数：${state.cutouts.length}</div><div>色透過度：${state.colorOpacity}% / 素材透過度：${state.materialOpacity}%</div><div>推定加工面積：画像全体の ${calculateMaskRatio(unionMask)}%</div>`;setStatus('提案画像を生成しました。','ok');updateGenerateButton()}catch(e){console.error(e);setStatus('生成に失敗しました。','warn')}}
+function resetAll(){state.baseImage=null;state.globalMaterial=null;state.selectedColor=null;state.faces=[];state.selectedFaceId=null;state.activeFace=null;state.cutouts=[];state.activeCutout=null;state.creatingMode=null;state.compareCanvas=null;state.faceCounter=1;$('baseInfo').textContent='';$('materialsGrid').innerHTML='';$('resultSummary').style.display='none';$('placeholder').style.display='block';$('editCanvas').style.display='none';$('compareCanvas').style.display='none';$('selectionPill').textContent='選択色：未選択';$('materialPill').textContent='全体素材：なし';$('facePill').textContent='選択面：なし';renderGlobalMaterial();renderSwatches();renderFaceList();updateGenerateButton();setStatus('待機中です。')}
+function downloadJpg(){if(!state.compareCanvas)return;state.compareCanvas.toBlob(blob=>{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='proposal.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)},'image/jpeg',0.95)}
+function downloadPdf(){if(!state.compareCanvas)return;const { jsPDF } = window.jspdf;const pdf=new jsPDF({orientation:'landscape',unit:'pt',format:'a4'}),w=pdf.internal.pageSize.getWidth(),h=pdf.internal.pageSize.getHeight();pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.95),'JPEG',18,18,w-36,h-36);pdf.save('proposal.pdf')}
+async function handleBaseImage(file){state.baseImageDataUrl=await fileToDataUrl(file);state.baseImage=await loadImage(state.baseImageDataUrl);state.faces=[];state.selectedFaceId=null;state.activeFace=null;state.cutouts=[];state.activeCutout=null;state.creatingMode=null;state.compareCanvas=null;state.faceCounter=1;$('baseInfo').textContent=`${file.name} / ${state.baseImage.width} × ${state.baseImage.height}`;renderEditPreview();updateGenerateButton();setStatus('写真を読み込みました。面を作成してください。','ok')}
+async function handleGlobalMaterial(file){const previewUrl=await fileToDataUrl(file);state.globalMaterial={name:file.name,previewUrl,image:await loadImage(previewUrl)};renderGlobalMaterial();renderEditPreview();setStatus('全体素材を読み込みました。','ok')}
+async function handleFaceMaterial(file){const f=currentFace();if(!f){setStatus('先に面を選択してください。','warn');return}const previewUrl=await fileToDataUrl(file);f.material={name:file.name,previewUrl,image:await loadImage(previewUrl)};if(!f.materialQuad)f.materialQuad=createRectQuadForFace(f.points);renderFaceList();renderEditPreview();setStatus('選択面の個別素材を設定しました。','ok')}
+renderPaletteTabs();renderSwatches();renderGlobalMaterial();renderFaceList();updateLabels();updateGenerateButton();setStatus('待機中です。');$('proposalDate').value=new Date().toISOString().slice(0,10);
+$('baseImageInput').addEventListener('change',async e=>{const file=e.target.files[0];if(file)await handleBaseImage(file)});$('materialInput').addEventListener('change',async e=>{const file=e.target.files[0];if(file)await handleGlobalMaterial(file)});$('faceMaterialInput').addEventListener('change',async e=>{const file=e.target.files[0];if(file)await handleFaceMaterial(file)});
+$('clearFaceMaterialBtn').onclick=()=>{const f=currentFace();if(!f){setStatus('先に面を選択してください。','warn');return}f.material=null;renderFaceList();renderEditPreview();setStatus('選択面素材を解除しました。再設定も可能です。','ok')};
+$('resetMaterialQuadBtn').onclick=()=>{const f=currentFace();if(!f){setStatus('先に面を選択してください。','warn');return}f.materialQuad=createRectQuadForFace(f.points);renderEditPreview();setStatus('素材枠を面サイズに戻しました。','ok')};
+$('colorOpacity').addEventListener('input',e=>{state.colorOpacity=Number(e.target.value);updateLabels();renderEditPreview()});$('materialOpacity').addEventListener('input',e=>{state.materialOpacity=Number(e.target.value);updateLabels();renderEditPreview()});
+$('startFaceBtn').onclick=startFace;$('closeFaceBtn').onclick=closeFace;$('deleteFaceBtn').onclick=deleteFace;$('startCutoutBtn').onclick=startCutout;$('closeCutoutBtn').onclick=closeCutout;$('clearCutoutsBtn').onclick=clearCutouts;$('generateBtn').onclick=generateProposal;$('resetBtn').onclick=resetAll;$('downloadJpgBtn').onclick=downloadJpg;$('downloadPdfBtn').onclick=downloadPdf;
+editCanvas.addEventListener('click',e=>{if(!state.baseImage||!state.creatingMode)return;if(state.dragMode)return;const p=clampPoint(canvasToImagePoint(e));if(state.creatingMode==='face'&&state.activeFace){state.activeFace.points.push(p);renderEditPreview()}else if(state.creatingMode==='cutout'&&state.activeCutout){state.activeCutout.points.push(p);renderEditPreview()}});
+editCanvas.addEventListener('dblclick',e=>{if(!state.baseImage)return;const p=canvasToImagePoint(e),hit=hitTestAll(p);if(hit.type==='face-vertex'){const f=state.faces.find(x=>x.id===hit.faceId);if(f&&f.points.length>3){f.points.splice(hit.index,1);renderEditPreview();setStatus('面の頂点を削除しました。','ok')}return}if(hit.type==='cutout-vertex'){if(state.cutouts[hit.polyIndex].points.length>3){state.cutouts[hit.polyIndex].points.splice(hit.index,1);renderEditPreview();setStatus('切り抜きの頂点を削除しました。','ok')}return}if(state.creatingMode==='face')closeFace();else if(state.creatingMode==='cutout')closeCutout()});
+editCanvas.addEventListener('pointerdown',e=>{if(!state.baseImage||state.creatingMode)return;const p=canvasToImagePoint(e),hit=hitTestAll(p);if(hit.type==='face-select'){state.selectedFaceId=hit.faceId;syncFaceControls();renderFaceList();renderEditPreview();setStatus('面を選択しました。','ok');return}if(hit.type==='quad-vertex'){state.dragMode='quad-vertex';state.dragIndex=hit.index;setStatus('素材枠の角を調整中です。');return}if(hit.type==='quad-move'){state.dragMode='quad-move';state.dragStart=p;state.startPoints=currentFace().materialQuad.map(pt=>({x:pt.x,y:pt.y}));setStatus('素材枠を移動中です。');return}if(hit.type==='face-vertex'){state.selectedFaceId=hit.faceId;syncFaceControls();state.dragMode='face-vertex';state.dragTarget=hit.faceId;state.dragIndex=hit.index;setStatus('面の頂点を調整中です。')}else if(hit.type==='face-move'){state.selectedFaceId=hit.faceId;syncFaceControls();state.dragMode='face-move';state.dragTarget=hit.faceId;state.dragStart=p;state.startPoints=currentFace().points.map(pt=>({x:pt.x,y:pt.y}));setStatus('面全体を移動中です。')}else if(hit.type==='cutout-vertex'){state.dragMode='cutout-vertex';state.dragTarget=hit.polyIndex;state.dragIndex=hit.index;setStatus('切り抜きの頂点を調整中です。')}else if(hit.type==='cutout-move'){state.dragMode='cutout-move';state.dragTarget=hit.polyIndex;state.dragStart=p;state.startPoints=state.cutouts[hit.polyIndex].points.map(pt=>({x:pt.x,y:pt.y}));setStatus('切り抜き全体を移動中です。')}});
+editCanvas.addEventListener('pointermove',e=>{if(!state.dragMode)return;const p=clampPoint(canvasToImagePoint(e));if(state.dragMode==='quad-vertex'){const f=currentFace();if(f&&f.materialQuad)f.materialQuad[state.dragIndex]=p}else if(state.dragMode==='quad-move'){const f=currentFace();if(f&&f.materialQuad){const dx=p.x-state.dragStart.x,dy=p.y-state.dragStart.y;f.materialQuad=state.startPoints.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy}))}}else if(state.dragMode==='face-vertex'){const f=state.faces.find(x=>x.id===state.dragTarget);if(f)f.points[state.dragIndex]=p}else if(state.dragMode==='cutout-vertex'){state.cutouts[state.dragTarget].points[state.dragIndex]=p}else if(state.dragMode==='face-move'){const f=state.faces.find(x=>x.id===state.dragTarget);if(f){const dx=p.x-state.dragStart.x,dy=p.y-state.dragStart.y;f.points=state.startPoints.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy}));if(f.materialQuad)f.materialQuad=f.materialQuad.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy}))}}else if(state.dragMode==='cutout-move'){const dx=p.x-state.dragStart.x,dy=p.y-state.dragStart.y;state.cutouts[state.dragTarget].points=state.startPoints.map(pt=>clampPoint({x:pt.x+dx,y:pt.y+dy}))}renderEditPreview()});
+const finishDrag=()=>{if(!state.dragMode)return;state.dragMode=null;state.dragTarget=null;state.dragIndex=-1;state.dragStart=null;state.startPoints=null;setStatus('調整しました。','ok')};editCanvas.addEventListener('pointerup',finishDrag);editCanvas.addEventListener('pointerleave',finishDrag);
 </script>
 </body>
 </html>
-
