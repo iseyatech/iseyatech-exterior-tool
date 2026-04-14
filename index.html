@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v16.0 Stable</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v16.1 Stable</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -66,7 +66,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v16 Stable / 素材360°回転 / 安定稼働再設計</div>
+      <div class="badge">v16.1 Stable / 素材回転修正版 / テクスチャ縮小</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -177,7 +177,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
         <div class="range-row"><span>素材回転</span><span id="materialRotationLabel">0°</span></div>
         <input id="materialRotation" type="range" min="0" max="359" value="0" />
 
-        <div class="hint" style="margin-top:8px">外観の角度に合わせて、素材の向きを0〜359°で調整できます。</div>
+        <div class="hint" style="margin-top:8px">外観の角度に合わせて、素材の向きを0〜359°で調整できます。回転時に柄が崩れにくい方式へ修正しました。</div>
       </div>
 
       <div class="card">
@@ -713,37 +713,22 @@ function drawPolygon(points, closed, stroke, fill, label){
   editCtx.restore();
 }
 
-function rotateCanvasAnyAngle(srcCanvas, deg){
-  const rad = deg * Math.PI / 180;
-  const sin = Math.abs(Math.sin(rad));
-  const cos = Math.abs(Math.cos(rad));
-  const newW = Math.max(1, Math.ceil(srcCanvas.width * cos + srcCanvas.height * sin));
-  const newH = Math.max(1, Math.ceil(srcCanvas.width * sin + srcCanvas.height * cos));
-  const c = document.createElement('canvas');
-  c.width = newW;
-  c.height = newH;
-  const ctx = c.getContext('2d');
-  ctx.translate(newW / 2, newH / 2);
-  ctx.rotate(rad);
-  ctx.drawImage(srcCanvas, -srcCanvas.width / 2, -srcCanvas.height / 2);
-  return c;
-}
-function getTextureTile(materialUrl, img, faceBounds, materialScale, rotation){
-  const densityBase = Math.max(0.18, Math.min(2.6, 240 / Math.max(40, faceBounds.width)));
-  const density = Math.max(0.08, Math.min(5, densityBase * (materialScale || 1)));
+
+function getTextureTile(materialUrl, img, faceBounds, materialScale){
+  // 前回版に近い、より細かいテクスチャ密度へ調整
+  const densityBase = Math.max(0.10, Math.min(1.15, 110 / Math.max(80, faceBounds.width)));
+  const density = Math.max(0.05, Math.min(2.2, densityBase * (materialScale || 1)));
   const scaleKey = density.toFixed(3);
-  const rotKey = Math.round(rotation || 0);
-  const key = `${materialUrl}|${scaleKey}|${rotKey}`;
+  const key = `${materialUrl}|${scaleKey}`;
   if(textureCache.has(key)) return textureCache.get(key);
 
   const tile = document.createElement('canvas');
-  tile.width = Math.max(12, Math.round(img.width * density));
-  tile.height = Math.max(12, Math.round(img.height * density));
+  tile.width = Math.max(8, Math.round(img.width * density));
+  tile.height = Math.max(8, Math.round(img.height * density));
   tile.getContext('2d').drawImage(img, 0, 0, tile.width, tile.height);
 
-  const rotated = rotKey === 0 ? tile : rotateCanvasAnyAngle(tile, rotKey);
-  textureCache.set(key, rotated);
-  return rotated;
+  textureCache.set(key, tile);
+  return tile;
 }
 function drawCompositeToContext(ctx, outW, outH){
   const baseW = state.baseImage.width;
@@ -774,19 +759,22 @@ function drawCompositeToContext(ctx, outW, outH){
       const img = imageCache.get(face.material.previewUrl);
       if(img){
         const faceBounds = polygonBounds(face.points);
-        const tile = getTextureTile(face.material.previewUrl, img, faceBounds, face.materialScale || 1, face.materialRotation || 0);
+        const tile = getTextureTile(face.material.previewUrl, img, faceBounds, face.materialScale || 1);
+        const center = polygonCentroid(face.points);
+
         ctx.save();
         createPath(ctx, face.points, sx, sy);
         ctx.clip();
         ctx.globalAlpha = state.materialOpacity / 100;
+
+        // 回転済み画像を作らず、塗り座標系だけ回転させることで崩れを防ぐ
+        ctx.translate(center.x * sx, center.y * sy);
+        ctx.rotate((face.materialRotation || 0) * Math.PI / 180);
+
         const pattern = ctx.createPattern(tile, 'repeat');
         ctx.fillStyle = pattern;
-        const pad = Math.max(outW, outH);
-        ctx.fillRect(-pad, -pad, outW + pad*2, outH + pad*2);
-        ctx.restore();
-
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
+        const pad = Math.max(outW, outH) * 2;
+        ctx.fillRect(-pad, -pad, pad * 2, pad * 2);
         ctx.restore();
       }
     }
