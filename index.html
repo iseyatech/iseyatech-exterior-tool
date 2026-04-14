@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>伊勢屋テック｜営業専用 外装提案ツール v10</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v14</title>
 <style>
 :root{--bg:#f8fafc;--card:#fff;--line:#e2e8f0;--text:#0f172a;--muted:#64748b;--primary:#111827;--soft:#f1f5f9;--ok:#dcfce7;--warn:#fef3c7}
 *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text)}
@@ -27,7 +27,7 @@ input[type="file"]{display:none} input[type="text"],input[type="date"],select{wi
 </head>
 <body>
 <div class="wrap">
-<div class="top"><div><div class="badge">v10 / material quad live preview</div><h1>営業専用 外装提案ツール v10</h1><div class="sub">v8 をベースに、選択素材の方向調整パラメーターをやめて、素材専用の自由ポリゴンを直接ドラッグで調整する方式に変更しました。画面レイアウトも見直し、右側の画像エリアを大きく、左側の操作エリアを小さくしています。クリックで辺を作って自由形状にし、面より大きく取れば柄を細かく、小さく取れば柄を大きくできます。変更はリアルタイムで見えます。面素材を解除したあとも再設定できるよう修正しています。</div></div><div class="row"><button id="undoBtn">元に戻す</button><button id="redoBtn">やり直し</button><button id="downloadJpgBtn" disabled>JPG出力</button><button id="downloadPdfBtn" class="primary" disabled>提案書PDF出力</button></div></div>
+<div class="top"><div><div class="badge">v14 / material polygon + undo</div><h1>営業専用 外装提案ツール v14</h1><div class="sub">v8 をベースに、選択素材の方向調整パラメーターをやめて、素材専用の自由ポリゴンを直接ドラッグで調整する方式に変更しました。画面レイアウトも見直し、右側の画像エリアを大きく、左側の操作エリアを小さくしています。クリックで辺を作って自由形状にし、面より大きく取れば柄を細かく、小さく取れば柄を大きくできます。変更はリアルタイムで見えます。面素材を解除したあとも再設定できるよう修正しています。</div></div><div class="row"><button id="undoBtn">元に戻す</button><button id="redoBtn">やり直し</button><button id="downloadJpgBtn" disabled>JPG出力</button><button id="downloadPdfBtn" class="primary" disabled>提案書PDF出力</button></div></div>
 
 <div class="layout">
 <div class="section">
@@ -138,7 +138,7 @@ function createRectQuadForFace(points){const xs=points.map(p=>p.x), ys=points.ma
 function createFaceConfig(){const n=state.faceCounter++;return{id:'face_'+n,name:'面'+n,points:[],closed:false,color:null,material:null,materialQuad:null}}
 function renderPaletteTabs(){const box=$('paletteTabs');box.innerHTML='';Object.keys(PALETTES).forEach(key=>{const btn=document.createElement('button');btn.className='tab'+(state.paletteKey===key?' active':'');btn.textContent=key;btn.onclick=()=>{state.paletteKey=key;renderPaletteTabs();renderSwatches()};box.appendChild(btn)})}
 function renderSwatches(){const box=$('swatches');box.innerHTML='';PALETTES[state.paletteKey].forEach(color=>{const f=currentFace();const active=((f&&f.color?.code===color.code)||(!f&&state.selectedColor?.code===color.code));const item=document.createElement('button');item.className='swatch'+(active?' active':'');item.innerHTML=`<div class="chip" style="background:${color.hex}"></div><div style="font-weight:700">${color.code}</div><div class="small">${color.name}</div>`;item.onclick=()=>{const face=currentFace();if(face){face.color=color}else{state.selectedColor=color}$('selectionPill').textContent=`選択色：${color.code} / ${color.name}`;renderSwatches();renderFaceList();renderEditPreview();updateGenerateButton();pushHistory()};box.appendChild(item)})}
-function renderGlobalMaterial(){const box=$('materialsGrid');box.innerHTML='';if(!state.globalMaterial){$('materialPill').textContent='素材：面単位';return}const item=document.createElement('div');item.className='material';item.innerHTML=`<img src="${state.globalMaterial.previewUrl}" alt=""><div class="small" style="margin-top:6px">${state.globalMaterial.name}</div>`;box.appendChild(item);$('materialPill').textContent=`素材：${state.globalMaterial.name}`}
+function renderGlobalMaterial(){$('materialPill').textContent='素材：面単位';}
 function renderFaceMaterialBox(){const f=currentFace();if(!f){$('faceMaterialBox').textContent='面が未選択です。';$('faceColorBox').textContent='選択面色：未設定（全体色を使用）';return}if(f.material){$('faceMaterialBox').textContent=`選択面素材：${f.material.name}`}else{$('faceMaterialBox').textContent='選択面素材：未設定'}if(f.color){$('faceColorBox').textContent=`選択面色：${f.color.code} / ${f.color.name}`}else{$('faceColorBox').textContent='選択面色：未設定（全体色を使用）'}}
 function renderFaceList(){const box=$('faceList');box.innerHTML='';if(state.faces.length===0){box.innerHTML='<div class="small">面がまだありません。</div>';$('facePill').textContent='選択面：なし';renderFaceMaterialBox();return}state.faces.forEach((face,idx)=>{const btn=document.createElement('button');btn.className='face-item'+(face.id===state.selectedFaceId?' active':'');btn.innerHTML=`<div style="font-weight:700">面 ${idx+1}</div><div class="small">点数：${face.points.length} / ${face.closed?'確定済み':'作成中'}</div><div class="small">個別素材：${face.material?face.material.name:'なし'}</div><div class="small">個別色：${face.color?face.color.code:'全体色'}</div>`;btn.onclick=()=>{state.selectedFaceId=face.id;syncFaceControls();renderFaceList();renderEditPreview()};box.appendChild(btn)});const f=currentFace();$('facePill').textContent=f?`選択面：${state.faces.indexOf(f)+1}`:'選択面：なし';renderFaceMaterialBox()}
 function syncFaceControls(){const f=currentFace();if(!f)return;if(f.color){$('selectionPill').textContent=`選択色：${f.color.code} / ${f.color.name}`}else if(state.selectedColor){$('selectionPill').textContent=`選択色：${state.selectedColor.code} / ${state.selectedColor.name}`}renderFaceMaterialBox();updateLabels()}
