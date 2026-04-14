@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v16.2 Stable</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v16.3 Stable</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -66,7 +66,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v16.2 Stable / 切り抜きマスク修正版</div>
+      <div class="badge">v16.3 Stable / 同一素材の複数面適用修正版</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -160,7 +160,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 
       <div class="card">
         <h2>⑦ 選択面の素材</h2>
-        <div class="desc">素材は選択面ごとに設定します。素材ポリゴンは廃止し、素材スケールと360°回転で調整します。</div>
+        <div class="desc">素材は選択面ごとに設定します。同じ素材ファイルを複数面へ連続適用できるよう修正済みです。素材ポリゴンは廃止し、素材スケールと360°回転で調整します。</div>
         <div class="row">
           <label class="file-label rowbtn" for="faceMaterialInput">選択面の素材を設定</label>
           <input id="faceMaterialInput" type="file" accept="image/png,image/jpeg,image/webp" />
@@ -1162,7 +1162,12 @@ $('reloadDefaultCsvBtn').onclick = ()=>loadDefaultCsv();
 $('colorCodeSearch').addEventListener('input', e=>{ state.colorCodeSearch = e.target.value; renderSwatches(); });
 $('colorNameSearch').addEventListener('input', e=>{ state.colorNameSearch = e.target.value; renderSwatches(); });
 
-$('faceMaterialInput').addEventListener('change', async e=>{ const file=e.target.files[0]; if(file) await handleFaceMaterial(file); });
+$('faceMaterialInput').addEventListener('click', e=>{ e.target.value = ''; });
+$('faceMaterialInput').addEventListener('change', async e=>{
+  const file = e.target.files[0];
+  if(file) await handleFaceMaterial(file);
+  e.target.value = '';
+});
 $('clearFaceMaterialBtn').onclick = ()=>{
   const f = currentFace();
   if(!f){ setStatus('先に面を選択してください。','warn'); return; }
@@ -1339,3 +1344,4 @@ editCanvas.addEventListener('pointerleave', finishDrag);
 </script>
 </body>
 </html>
+
