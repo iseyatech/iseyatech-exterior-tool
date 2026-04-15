@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v17.5 Final</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v18.0 Final</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -65,7 +65,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v17.5 Final / 2カラム骨格修正版</div>
+      <div class="badge">v18.0 Final / JPGはAfter画像のみ出力</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -75,7 +75,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
     <div class="row">
       <button id="undoBtn" class="rowbtn secondary">元に戻す</button>
       <button id="redoBtn" class="rowbtn secondary">やり直し</button>
-      <button id="downloadJpgBtn" class="rowbtn secondary" disabled>JPG出力</button>
+      <button id="downloadJpgBtn" class="rowbtn secondary" disabled>After JPG出力</button>
       <button id="downloadPdfBtn" class="rowbtn primary" disabled>提案書PDF出力</button>
     </div>
   </div>
@@ -1095,11 +1095,25 @@ function generateProposal(){
   }
 }
 function downloadJpg(){
-  if(!state.compareCanvas) return;
-  state.compareCanvas.toBlob(blob=>{
+  if(!state.baseImage) return;
+
+  const coloredFaces = state.faces.filter(f=>polygonReady(f) && f.color);
+  if(!coloredFaces.length){
+    setStatus('少なくとも1面に色を設定してください。','warn');
+    return;
+  }
+
+  const out = document.createElement('canvas');
+  out.width = state.baseImage.width;
+  out.height = state.baseImage.height;
+  const octx = out.getContext('2d');
+
+  drawCompositeToContext(octx, out.width, out.height);
+
+  out.toBlob(blob=>{
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'proposal.jpg';
+    a.download = 'after.jpg';
     a.click();
     setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   }, 'image/jpeg', 0.95);
