@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v18.1 Final</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v18.2 Final</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -20,7 +20,7 @@ body{
 h1{margin:0 0 8px;font-size:30px}
 .sub{font-size:14px;line-height:1.7;color:var(--muted);max-width:1100px}
 .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;margin-bottom:8px}
-.top-project{position:sticky;top:0;z-index:50;background:var(--bg);padding-bottom:12px;margin-bottom:18px}.layout{display:grid;grid-template-columns:420px minmax(0,1fr);gap:18px;align-items:start}.left{display:flex;flex-direction:column;gap:14px;min-width:0}.right{position:sticky;top:120px;align-self:start;min-width:0}
+.top-project{background:var(--bg);padding-bottom:12px;margin-bottom:18px}.layout{display:grid;grid-template-columns:420px minmax(0,1fr);gap:18px;align-items:start}.left{display:flex;flex-direction:column;gap:14px;min-width:0}.right{position:sticky;top:120px;align-self:start;min-width:0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
 .card h2{margin:0 0 6px;font-size:18px}
 .desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:10px}
@@ -65,7 +65,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v18.1 Final / 面ごと透過度対応</div>
+      <div class="badge">v18.2 Final / 透過度UI整理版</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -172,14 +172,6 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
         <div id="faceColorBox" class="small" style="margin-top:4px"></div>
 
         <div style="height:10px"></div>
-        <div class="range-row"><span>面ごとの色透過度</span><span id="faceColorOpacityLabel">全体設定</span></div>
-        <input id="faceColorOpacity" type="range" min="0" max="100" value="54" />
-
-        <div style="height:8px"></div>
-        <div class="range-row"><span>面ごとの素材透過度</span><span id="faceMaterialOpacityLabel">全体設定</span></div>
-        <input id="faceMaterialOpacity" type="range" min="0" max="100" value="32" />
-
-        <div style="height:10px"></div>
         <div class="range-row"><span>素材スケール</span><span id="materialScaleLabel">100%</span></div>
         <input id="materialScale" type="range" min="30" max="250" value="100" />
 
@@ -187,11 +179,12 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
         <div class="range-row"><span>素材回転</span><span id="materialRotationLabel">0°</span></div>
         <input id="materialRotation" type="range" min="0" max="359" value="0" />
 
-        <div class="hint" style="margin-top:8px">UIはそのままに、選択面ごとの色透過度・素材透過度を追加しました。未設定時は下部の全体透過度が適用されます。</div>
+        <div class="hint" style="margin-top:8px">素材スケールと素材回転は選択面ごとに設定されます。透過度の調整は下部の⑦で行います。</div>
       </div>
 
       <div class="card">
         <h2>⑦ 透過度</h2>
+        <div class="desc">選択面ごとの透過度を設定します。面が未選択の場合は調整できません。</div>
         <div class="range-row"><span>色の透過度</span><span id="colorOpacityLabel">54%</span></div>
         <input id="colorOpacity" type="range" min="0" max="100" value="54" />
         <div style="height:8px"></div>
@@ -689,8 +682,14 @@ function syncFaceControls(){
 }
 function renderMaterialPill(){ $('materialPill').textContent = '素材：面単位 / 回転可'; }
 function updateLabels(){
-  $('colorOpacityLabel').textContent = state.colorOpacity + '%';
-  $('materialOpacityLabel').textContent = state.materialOpacity + '%';
+  const f = currentFace();
+  if(f){
+    $('colorOpacityLabel').textContent = `${f.colorOpacity ?? state.colorOpacity}%`;
+    $('materialOpacityLabel').textContent = `${f.materialOpacity ?? state.materialOpacity}%`;
+  }else{
+    $('colorOpacityLabel').textContent = '未選択';
+    $('materialOpacityLabel').textContent = '未選択';
+  }
 }
 function updateGenerateButton(){
   const ready = state.baseImage && state.faces.some(f=>polygonReady(f) && f.color);
@@ -1208,26 +1207,6 @@ $('clearFaceMaterialBtn').onclick = ()=>{
   pushHistory();
 };
 
-$('faceColorOpacity').addEventListener('input', e=>{
-  const f = currentFace();
-  if(!f) return;
-  f.colorOpacity = Number(e.target.value);
-  $('faceColorOpacityLabel').textContent = `${e.target.value}%`;
-  renderFaceList();
-  queueRender();
-});
-$('faceColorOpacity').addEventListener('change', ()=>pushHistory());
-
-$('faceMaterialOpacity').addEventListener('input', e=>{
-  const f = currentFace();
-  if(!f) return;
-  f.materialOpacity = Number(e.target.value);
-  $('faceMaterialOpacityLabel').textContent = `${e.target.value}%`;
-  renderFaceList();
-  queueRender();
-});
-$('faceMaterialOpacity').addEventListener('change', ()=>pushHistory());
-
 $('materialScale').addEventListener('input', e=>{
   const f = currentFace();
   if(!f) return;
@@ -1246,9 +1225,30 @@ $('materialRotation').addEventListener('input', e=>{
 });
 $('materialRotation').addEventListener('change', ()=>pushHistory());
 
-$('colorOpacity').addEventListener('input', e=>{ state.colorOpacity = Number(e.target.value); updateLabels(); queueRender(); });
+$('colorOpacity').addEventListener('input', e=>{
+  const f = currentFace();
+  if(!f){
+    $('colorOpacityLabel').textContent = '未選択';
+    return;
+  }
+  f.colorOpacity = Number(e.target.value);
+  $('colorOpacityLabel').textContent = `${e.target.value}%`;
+  renderFaceList();
+  queueRender();
+});
 $('colorOpacity').addEventListener('change', ()=>pushHistory());
-$('materialOpacity').addEventListener('input', e=>{ state.materialOpacity = Number(e.target.value); updateLabels(); queueRender(); });
+
+$('materialOpacity').addEventListener('input', e=>{
+  const f = currentFace();
+  if(!f){
+    $('materialOpacityLabel').textContent = '未選択';
+    return;
+  }
+  f.materialOpacity = Number(e.target.value);
+  $('materialOpacityLabel').textContent = `${e.target.value}%`;
+  renderFaceList();
+  queueRender();
+});
 $('materialOpacity').addEventListener('change', ()=>pushHistory());
 
 $('startFaceBtn').onclick = startFace;
