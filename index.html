@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v17 Final</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v17.2 Final</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -20,7 +20,7 @@ body{
 h1{margin:0 0 8px;font-size:30px}
 .sub{font-size:14px;line-height:1.7;color:var(--muted);max-width:1100px}
 .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;margin-bottom:8px}
-.layout{display:grid;grid-template-columns:470px 1fr;gap:18px}
+.layout{display:grid;grid-template-columns:470px 1fr;gap:18px}.top-project{margin-bottom:18px}
 .left{display:grid;gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
 .card h2{margin:0 0 6px;font-size:18px}
@@ -115,7 +115,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
       </div>
 
       <div class="card">
-        <h2>③ 面の作成</h2>
+        <h2>② 面の作成</h2>
         <div class="desc">色や素材を載せたい面をポリゴンで作ります。</div>
         <div class="row">
           <button id="startFaceBtn" class="rowbtn secondary">面を作成</button>
@@ -126,24 +126,24 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
       </div>
 
       <div class="card">
-        <h2>④ 切り抜き</h2>
+        <h2>③ 切り抜き</h2>
         <div class="desc">窓など塗りたくない箇所を除外します。</div>
         <div class="row">
           <button id="startCutoutBtn" class="rowbtn secondary">切り抜き作成</button>
           <button id="closeCutoutBtn" class="rowbtn secondary">切り抜きを確定</button>
           <button id="deleteSelectedCutoutBtn" class="rowbtn secondary">選択切り抜きを削除</button>
-          <button id="clearCutoutsBtn" class="rowbtn secondary">切り抜き全削除</button>
+          
         </div>
       </div>
 
       <div class="card">
-        <h2>⑤ 面一覧</h2>
+        <h2>④ 面一覧</h2>
         <div class="desc">調整したい面を選択してください。色設定・素材設定は選択面に対してのみ行います。</div>
         <div id="faceList" class="face-list"></div>
       </div>
 
       <div class="card">
-        <h2>⑥ 色選択（選択面のみ）</h2>
+        <h2>⑤ 色選択（選択面のみ）</h2>
         <div class="desc">面を選択してから色を選んでください。色票番号・色名・マンセル値・カテゴリーで検索できます。</div>
         <div class="search-grid">
           <input id="colorCodeSearch" type="text" placeholder="色票番号検索" />
@@ -158,7 +158,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
       </div>
 
       <div class="card">
-        <h2>⑦ 選択面の素材</h2>
+        <h2>⑥ 選択面の素材</h2>
         <div class="desc">素材は選択面ごとに設定します。同じ素材ファイルを複数面へ連続適用できるよう修正済みです。素材ポリゴンは廃止し、素材スケールと360°回転で調整します。</div>
         <div class="row">
           <label class="file-label rowbtn" for="faceMaterialInput">選択面の素材を設定</label>
@@ -180,7 +180,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
       </div>
 
       <div class="card">
-        <h2>⑧ 透過度</h2>
+        <h2>⑦ 透過度</h2>
         <div class="range-row"><span>色の透過度</span><span id="colorOpacityLabel">54%</span></div>
         <input id="colorOpacity" type="range" min="0" max="100" value="54" />
         <div style="height:8px"></div>
@@ -189,7 +189,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
       </div>
 
       <div class="card">
-        <h2>⑨ 生成</h2>
+        <h2>⑧ 生成</h2>
         <div class="desc">描画は requestAnimationFrame で更新します。重い連続再描画を避け、安定動作を優先しています。色板一覧.xlsx の色検索を組み込み済みです。</div>
         <div class="row">
           <button id="generateBtn" class="rowbtn primary" disabled>提案生成</button>
@@ -1016,10 +1016,13 @@ function resetAll(){
 }
 function buildCompare(beforeImage){
   const afterFitted = fitRect(beforeImage.width, beforeImage.height, 1380, 820);
-  const beforeFitted = fitRect(beforeImage.width, beforeImage.height, 360, 240);
-  const margin = 30, titleH = 140, gap = 24;
-  compareCanvas.width = afterFitted.width + margin*2;
-  compareCanvas.height = titleH + afterFitted.height + beforeFitted.height + gap + margin*3 + 36;
+  const beforeFitted = fitRect(beforeImage.width, beforeImage.height, 540, 360);
+  const margin = 30, titleH = 140, gap = 26, labelGap = 26;
+
+  const contentW = Math.max(afterFitted.width, beforeFitted.width);
+  compareCanvas.width = contentW + margin * 2;
+  compareCanvas.height = titleH + beforeFitted.height + labelGap + gap + afterFitted.height + labelGap + margin * 2;
+
   compareCtx.fillStyle = '#fff';
   compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height);
 
@@ -1035,25 +1038,28 @@ function buildCompare(beforeImage){
   const coloredFaces = state.faces.filter(f=>polygonReady(f) && f.color);
   compareCtx.fillText(`設定面数：${coloredFaces.length} / 切り抜き数：${state.cutouts.length}`, margin+420, 70);
 
-  const beforeX = margin, beforeY = titleH;
-  const afterX = margin, afterY = beforeY + beforeFitted.height + gap;
+  const leftX = margin;
+  const beforeY = titleH;
+  const afterY = beforeY + beforeFitted.height + labelGap + gap;
 
   compareCtx.strokeStyle = '#e2e8f0';
   compareCtx.lineWidth = 1;
-  compareCtx.strokeRect(beforeX,beforeY,beforeFitted.width,beforeFitted.height);
-  compareCtx.drawImage(beforeImage,beforeX,beforeY,beforeFitted.width,beforeFitted.height);
+
+  compareCtx.strokeRect(leftX, beforeY, beforeFitted.width, beforeFitted.height);
+  compareCtx.drawImage(beforeImage, leftX, beforeY, beforeFitted.width, beforeFitted.height);
   compareCtx.fillStyle = '#0f172a';
   compareCtx.font = 'bold 16px sans-serif';
-  compareCtx.fillText('Before', beforeX, beforeY+beforeFitted.height+22);
+  compareCtx.fillText('Before', leftX, beforeY + beforeFitted.height + 22);
 
-  compareCtx.strokeRect(afterX,afterY,afterFitted.width,afterFitted.height);
+  compareCtx.strokeRect(leftX, afterY, afterFitted.width, afterFitted.height);
   const temp = document.createElement('canvas');
   temp.width = beforeImage.width;
   temp.height = beforeImage.height;
   drawCompositeToContext(temp.getContext('2d'), temp.width, temp.height);
-  compareCtx.drawImage(temp,afterX,afterY,afterFitted.width,afterFitted.height);
+  compareCtx.drawImage(temp, leftX, afterY, afterFitted.width, afterFitted.height);
   compareCtx.font = 'bold 18px sans-serif';
-  compareCtx.fillText('After', afterX, afterY+afterFitted.height+28);
+  compareCtx.fillText('After', leftX, afterY + afterFitted.height + 28);
+
   state.compareCanvas = compareCanvas;
 }
 function calculateMaskRatio(canvas){
@@ -1103,11 +1109,33 @@ function downloadJpg(){
 }
 function downloadPdf(){
   if(!state.compareCanvas) return;
+
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({orientation:'landscape', unit:'pt', format:'a4'});
-  const w = pdf.internal.pageSize.getWidth();
-  const h = pdf.internal.pageSize.getHeight();
-  pdf.addImage(state.compareCanvas.toDataURL('image/jpeg',0.95), 'JPEG', 18, 18, w-36, h-36);
+
+  const pageW = pdf.internal.pageSize.getWidth();
+  const pageH = pdf.internal.pageSize.getHeight();
+  const margin = 18;
+  const maxW = pageW - margin * 2;
+  const maxH = pageH - margin * 2;
+
+  const imgW = state.compareCanvas.width;
+  const imgH = state.compareCanvas.height;
+
+  const scale = Math.min(maxW / imgW, maxH / imgH);
+  const drawW = imgW * scale;
+  const drawH = imgH * scale;
+  const x = (pageW - drawW) / 2;
+  const y = (pageH - drawH) / 2;
+
+  pdf.addImage(
+    state.compareCanvas.toDataURL('image/png'),
+    'PNG',
+    x,
+    y,
+    drawW,
+    drawH
+  );
   pdf.save('proposal.pdf');
 }
 
@@ -1182,7 +1210,6 @@ $('deleteFaceBtn').onclick = deleteFace;
 $('startCutoutBtn').onclick = startCutout;
 $('closeCutoutBtn').onclick = closeCutout;
 $('deleteSelectedCutoutBtn').onclick = deleteSelectedCutout;
-$('clearCutoutsBtn').onclick = clearCutouts;
 $('generateBtn').onclick = generateProposal;
 $('resetBtn').onclick = resetAll;
 $('downloadJpgBtn').onclick = downloadJpg;
