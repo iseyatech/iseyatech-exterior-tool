@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v17.3 Final</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v17.4 Final</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -20,7 +20,7 @@ body{
 h1{margin:0 0 8px;font-size:30px}
 .sub{font-size:14px;line-height:1.7;color:var(--muted);max-width:1100px}
 .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;margin-bottom:8px}
-.top-project{margin-bottom:18px}.layout{display:grid;grid-template-columns:470px 1fr;gap:18px}
+.top-project{position:sticky;top:0;z-index:100;background:var(--bg);padding-bottom:12px;margin-bottom:18px}.layout{display:grid;grid-template-columns:420px 1fr;gap:18px;align-items:start}.left{max-height:calc(100vh - 170px);overflow-y:auto;padding-right:6px}.right{position:sticky;top:120px}
 .left{display:grid;gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
 .card h2{margin:0 0 6px;font-size:18px}
@@ -53,20 +53,20 @@ input[type="file"]{display:none}
 .status{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:13px;line-height:1.7}
 .hint{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;font-size:12px;line-height:1.7;color:var(--muted)}
 .preview-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}
-.preview-wrap{min-height:980px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px}
+.preview-wrap{min-height:760px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px}
 .preview-stack{display:grid;gap:10px;justify-items:center;width:100%}
 canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius:18px;touch-action:none}
 .placeholder{text-align:center;color:var(--muted)}
 .range-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
 .search-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-@media (max-width:1100px){.layout{grid-template-columns:1fr}.preview-wrap{min-height:600px}}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}.preview-wrap{min-height:520px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v17.3 Final / レイアウト修正版</div>
+      <div class="badge">v17.4 Final / 固定ヘッダー・2カラム最適化版</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -207,7 +207,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 
     </div>
 
-    <div class="preview-card">
+    <div class="preview-card right">
       <h2 style="margin:0 0 8px;font-size:18px">プレビュー</h2>
       <div class="desc">青が面、赤が切り抜きです。素材ポリゴンは廃止しました。編集プレビューと生成結果は同じ描画ロジックです。</div>
       <div class="pills">
