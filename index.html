@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>伊勢屋テック｜営業専用 外装提案ツール v17.2 Final</title>
+<title>伊勢屋テック｜営業専用 外装提案ツール v17.3 Final</title>
 <style>
 :root{
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --text:#0f172a; --muted:#64748b;
@@ -20,7 +20,7 @@ body{
 h1{margin:0 0 8px;font-size:30px}
 .sub{font-size:14px;line-height:1.7;color:var(--muted);max-width:1100px}
 .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;margin-bottom:8px}
-.layout{display:grid;grid-template-columns:470px 1fr;gap:18px}.top-project{margin-bottom:18px}
+.top-project{margin-bottom:18px}.layout{display:grid;grid-template-columns:470px 1fr;gap:18px}
 .left{display:grid;gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
 .card h2{margin:0 0 6px;font-size:18px}
@@ -66,7 +66,7 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="badge">v17 Final / 色板一覧統合版</div>
+      <div class="badge">v17.3 Final / レイアウト修正版</div>
       <h1>伊勢屋テック 外装提案ツール</h1>
       <div class="sub">
         素材ポリゴンを廃止し、面ごとの素材スケールと360°回転に集約しました。描画・履歴・素材読込を再設計し、
@@ -81,24 +81,34 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
     </div>
   </div>
 
-  <div class="layout">
-    <div class="left">
-
-      <div class="card">
-        <h2>案件情報</h2>
-        <div class="desc">提案書PDFの上部に表示します。</div>
+  
+<div class="top-project">
+  <div class="card">
+    <h2>案件情報</h2>
+    <div class="desc">提案書PDFの上部に表示します。</div>
+    <div class="row" style="align-items:flex-end">
+      <div style="flex:2;min-width:260px">
         <label class="label">案件名</label>
         <input id="projectName" type="text" value="外装塗装提案" />
-        <div style="height:8px"></div>
+      </div>
+      <div style="flex:2;min-width:220px">
         <label class="label">顧客名</label>
         <input id="customerName" type="text" placeholder="例：〇〇様邸" />
-        <div style="height:8px"></div>
+      </div>
+      <div style="flex:1.5;min-width:180px">
         <label class="label">担当者名</label>
         <input id="ownerName" type="text" placeholder="例：山田太郎" />
-        <div style="height:8px"></div>
+      </div>
+      <div style="flex:1.2;min-width:160px">
         <label class="label">提案日</label>
         <input id="proposalDate" type="date" />
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+    <div class="left">
 
       <div class="card">
         <h2>① 写真</h2>
@@ -107,10 +117,6 @@ canvas{max-width:100%;background:#fff;border:1px solid var(--line);border-radius
         <input id="baseImageInput" type="file" accept="image/png,image/jpeg,image/webp" />
         <div id="baseInfo" class="small" style="margin-top:8px"></div>
       </div>
-
-      <div class="card">
-        <h2>② 色マスタ</h2>
-        <div class="desc">色板一覧.xlsx を内蔵済みです。色票番号・色名・マンセル値・カテゴリーで検索できます。</div>
         <div id="csvInfo" class="small" style="margin-top:8px">色板一覧.xlsx を組み込み済み / 822色</div>
       </div>
 
@@ -1016,13 +1022,10 @@ function resetAll(){
 }
 function buildCompare(beforeImage){
   const afterFitted = fitRect(beforeImage.width, beforeImage.height, 1380, 820);
-  const beforeFitted = fitRect(beforeImage.width, beforeImage.height, 540, 360);
-  const margin = 30, titleH = 140, gap = 26, labelGap = 26;
-
-  const contentW = Math.max(afterFitted.width, beforeFitted.width);
-  compareCanvas.width = contentW + margin * 2;
-  compareCanvas.height = titleH + beforeFitted.height + labelGap + gap + afterFitted.height + labelGap + margin * 2;
-
+  const beforeFitted = fitRect(beforeImage.width, beforeImage.height, 360, 240);
+  const margin = 30, titleH = 140, gap = 24;
+  compareCanvas.width = afterFitted.width + margin*2;
+  compareCanvas.height = titleH + afterFitted.height + beforeFitted.height + gap + margin*3 + 36;
   compareCtx.fillStyle = '#fff';
   compareCtx.fillRect(0,0,compareCanvas.width,compareCanvas.height);
 
@@ -1038,28 +1041,25 @@ function buildCompare(beforeImage){
   const coloredFaces = state.faces.filter(f=>polygonReady(f) && f.color);
   compareCtx.fillText(`設定面数：${coloredFaces.length} / 切り抜き数：${state.cutouts.length}`, margin+420, 70);
 
-  const leftX = margin;
-  const beforeY = titleH;
-  const afterY = beforeY + beforeFitted.height + labelGap + gap;
+  const beforeX = margin, beforeY = titleH;
+  const afterX = margin, afterY = beforeY + beforeFitted.height + gap;
 
   compareCtx.strokeStyle = '#e2e8f0';
   compareCtx.lineWidth = 1;
-
-  compareCtx.strokeRect(leftX, beforeY, beforeFitted.width, beforeFitted.height);
-  compareCtx.drawImage(beforeImage, leftX, beforeY, beforeFitted.width, beforeFitted.height);
+  compareCtx.strokeRect(beforeX,beforeY,beforeFitted.width,beforeFitted.height);
+  compareCtx.drawImage(beforeImage,beforeX,beforeY,beforeFitted.width,beforeFitted.height);
   compareCtx.fillStyle = '#0f172a';
   compareCtx.font = 'bold 16px sans-serif';
-  compareCtx.fillText('Before', leftX, beforeY + beforeFitted.height + 22);
+  compareCtx.fillText('Before', beforeX, beforeY+beforeFitted.height+22);
 
-  compareCtx.strokeRect(leftX, afterY, afterFitted.width, afterFitted.height);
+  compareCtx.strokeRect(afterX,afterY,afterFitted.width,afterFitted.height);
   const temp = document.createElement('canvas');
   temp.width = beforeImage.width;
   temp.height = beforeImage.height;
   drawCompositeToContext(temp.getContext('2d'), temp.width, temp.height);
-  compareCtx.drawImage(temp, leftX, afterY, afterFitted.width, afterFitted.height);
+  compareCtx.drawImage(temp,afterX,afterY,afterFitted.width,afterFitted.height);
   compareCtx.font = 'bold 18px sans-serif';
-  compareCtx.fillText('After', leftX, afterY + afterFitted.height + 28);
-
+  compareCtx.fillText('After', afterX, afterY+afterFitted.height+28);
   state.compareCanvas = compareCanvas;
 }
 function calculateMaskRatio(canvas){
